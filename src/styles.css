@@ -1,6 +1,6 @@
 body {
-    background-color: rgb(85, 62, 62);
-
+    background-color: var(--backgroundColor);
+    min-height: 100vh;
 }
 
 * {
@@ -10,3 +10,10 @@ body {
     font-family: "Roboto", sans-serif;
     text-decoration: none;
 }
+
+:root {
+    --backgroundColor: #F5F5F5;
+    --primaryColor: #1A3D7C;
+    --secondaryColor: #00B7C2;
+}
+
