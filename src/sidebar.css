@@ -42,4 +42,21 @@ li:hover, .APMheading:hover {
     padding: 10px;
     border: 1px solid var(--secondaryColor);
     width: 100%;
+    outline: none;
 }
+
+.addProjectForm button {
+    padding: 5px;
+    margin: 5px;
+    min-width: 50px;
+}
+
+.addProjectFormButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.APFbtn1 {
+    background-color: var(--secondaryColor);
+}
+
