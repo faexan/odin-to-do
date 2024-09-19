@@ -32,10 +32,17 @@ li:hover, .APMheading:hover {
 }
 
 .addProjectForm {
-    background-color: beige;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.formExpanded {
+    max-height: 400px;
+    transition: max-height 0.4s ease;
 }
 
 #newProject {
@@ -45,18 +52,25 @@ li:hover, .APMheading:hover {
     outline: none;
 }
 
-.addProjectForm button {
-    padding: 5px;
-    margin: 5px;
-    min-width: 50px;
-}
 
 .addProjectFormButtons {
     display: flex;
     justify-content: center;
 }
 
+.APFbtn1, .APFbtn2 {
+    padding: 5px;
+    margin: 5px;
+    min-width: 80px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: var(--backgroundColor);
+    font-size: 1.1em;}
+
 .APFbtn1 {
     background-color: var(--secondaryColor);
 }
 
+.APFbtn2 {
+    background-color: var(--gray);
+}
