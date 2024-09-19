@@ -9,11 +9,14 @@ body {
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     text-decoration: none;
+    border: none;
 }
 
 :root {
     --backgroundColor: #F5F5F5;
     --primaryColor: #1A3D7C;
     --secondaryColor: #00B7C2;
+    --mainText: #333333;
+    --secondaryText: #7A7A7A;
 }
 

@@ -14,7 +14,7 @@
 <body>
     <header class="header">
         <div class="menuIconDiv">
-            <i class="fa-solid fa-bars menuIcon"></i>
+            <button type="button"><i class="fa-solid fa-bars menuIcon"></i></button>
                 </div>
         <div class="logoDiv">
             <h1 class="logo"><span class="logoTask">Task</span><span class="logoTide">Tide</span></h1>
@@ -25,9 +25,37 @@
     </header>
     <div class="container">
         <div class="menuDiv">
+            <div class="homeMenu">
+                <h1 class="HMheading">Home</h1>
+                <ul>
+                    <li class="HMLitems">All Tasks</li >
+                    <li class="HMLitems">Today</li >
+                    <li class="HMLitems">Next 7 days</li >
+                    <li class="HMLitems">Important</li >
+                </ul>
+            </div>
+            <div class="projectsMenu">
+                <h1 class="PMheading">Projects</h1>
+                <div class="addProject">
+                    <h4 class="APMheading"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Project</h4>
+                </div>
+                <div class="addProjectForm">
+                    <div>
+                        <input type="text" name="projectName" id="newProject" placeholder="Enter Project Name">
+                    </div>
+                    <div>
+                        <button type="button">Add</button><button type="button">Cancel</button>
+                    </div>
+                </div>
+                <ul>
+                    <li class="PMLitems">
+                        Default
+                    </li >
+                </ul>
+            </div>
         </div>
         <div class="mainScreenDiv">
-
+            <h1>Hello Bro this is me! You know what? You don't know alot of things yet. Yu are yet to know these things.</h1>
 
         </div>
 

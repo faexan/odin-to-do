@@ -1,0 +1,45 @@
+.homeMenu, .projectsMenu  {
+    padding: 20px;
+}
+
+li, .APMheading {
+    list-style: none;
+    padding: 10px;
+    border: 1px solid var(--secondaryColor);
+    width: 100%;
+    cursor: pointer;
+}
+
+li:hover, .APMheading:hover {
+    background-color: var(--secondaryColor);
+}
+
+.menuDiv {
+    transition: left 0.3s ease;
+}
+
+.mainScreenDiv {
+    transition: left  0.3s ease;
+}
+
+
+.menuDiv.sidebarActive {
+  left: -20vw; 
+}
+
+.mainScreenDiv.mainDivActive {
+    left: 0;
+}
+
+.addProjectForm {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#newProject {
+    padding: 10px;
+    border: 1px solid var(--secondaryColor);
+    width: 100%;
+}
