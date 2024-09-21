@@ -12,11 +12,32 @@
 }
 
 .mainScreenDiv {
-    border: 1px solid black;
     position: fixed;
     right: 0;
     left: 20vw;
     width: auto;
     height: 80vh;
     min-height: calc(100vh - 100px);
+    margin: 30px 30px 0 30px;
+}
+
+
+
+
+.mainScreenheading  {
+    padding: 40px;
+    background-color: var(--primaryColor);
+    color: var(--backgroundColor);
+    border-radius: 5px;
+}
+
+.tasksDiv {
+    padding-top: 30px;
+}
+
+
+.tasks {
+    height: 50px;
+    background-color: var(--secondaryText);
+    border-radius: 5px;
 }
