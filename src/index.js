@@ -6,16 +6,9 @@ import "./sidebar.css";
 
 
 import { menuDisplay } from "./menuDiv";
-import { Todo } from "./hello";
+import { logic } from "./logic.js";
+import mainScreenDom from "./mainScreenDom.js";
 
-
-const todo1 = new Todo("Personal", "Do Pushups", "Do twenty pushups", "Today", "Moderate");
-
-const todos =[];
-
-function allTodos(todo) {
-    todos.push(todo);
-}
-
+mainScreenDom();
 
 menuDisplay();
