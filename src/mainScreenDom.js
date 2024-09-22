@@ -109,15 +109,25 @@ const createTaskOnDom = function() {
 
 
 
-const addNewTask = function() {
+const newTaskFormExpand = function() {
+    const trigger = document.querySelector(".addTaskRow");
+    const trigger2 = document.querySelector(".cancelTaskForm");
+    const form = document.querySelector(".addTaskForm");
 
-    const div = document.createElement("div");
+    trigger.addEventListener("click", () => {
+        form.classList.toggle("addTaskFormExpanded");
+    })
+    
+
+    trigger2.addEventListener("click", () => {
+        form.classList.toggle("addTaskFormExpanded");
+    })
     
 
 
 }
 
-
+newTaskFormExpand();
 
 createTaskOnDom();
 
