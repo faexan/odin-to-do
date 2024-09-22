@@ -53,22 +53,31 @@ const createTaskOnDom = function() {
     const mainDiv = document.createElement("div");
     const div = document.createElement("div");
     const div2 = document.createElement("div");
-    const checkBox = document.createElement("input");
-    const taskName = document.createElement("span");
     const taskDetails = document.createElement("button");
+    const dueDate = document.createElement("span");
+    const editTask = document.createElement("span");
+    const deleteTask = document.createElement("span");
 
+    div.innerHTML = '<div class="checkbox-wrapper-52"><label for="todo-52" class="item"><input type="checkbox" id="todo-52" class="hidden"/><label for="todo-52" class="cbx"><svg width="14px" height="12px" viewBox="0 0 14 12"><polyline points="1 7.6 5 11 13 1"></polyline></svg></label><label for="todo-52" class="cbx-lbl">To-do</label></label></div>';
+    
 
-    checkBox.type = "checkbox";
+    
+    
     taskDetails.type = "button";
     taskDetails.innerHTML = "Details";
-    taskName.innerHTML = "Some Stuff I have to do";
+    dueDate.innerHTML = "10-12-2024";
+    editTask.innerHTML = "<i class='fas fa-edit'></i>";
+    deleteTask.innerHTML = "<i class='fa-solid fa-trash'></i>";
 
 
 
     mainDiv.classList.add("tasks");
-    checkBox.classList.add("TaskCheckBox");
-    taskName.classList.add("taskName");
+    
+
     taskDetails.classList.add("taskDetailsBtn");
+    dueDate.classList.add("dueDate");
+    editTask.classList.add("editTaskIcon");
+    deleteTask.classList.add("deleteTaskIcon");
 
 
 
@@ -77,9 +86,12 @@ const createTaskOnDom = function() {
 
 
 
-    div.appendChild(checkBox);
-    div.appendChild(taskName);
+
+
     div2.appendChild(taskDetails);
+    div2.appendChild(dueDate);
+    div2.appendChild(editTask);
+    div2.appendChild(deleteTask);
 
 
     mainDiv.appendChild(div);
@@ -90,10 +102,20 @@ const createTaskOnDom = function() {
     tasksDiv.appendChild(mainDiv);
 
 
+    const taskName = document.querySelector(".cbx-lbl");
+    taskName.innerText = "Some stuff I have to do";
     
 }
 
 
+
+const addNewTask = function() {
+
+    const div = document.createElement("div");
+    
+
+
+}
 
 
 

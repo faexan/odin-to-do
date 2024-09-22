@@ -41,3 +41,33 @@
     background-color: var(--secondaryText);
     border-radius: 5px;
 }
+
+.tasks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.deleteTaskIcon, .editTaskIcon, .dueDate {
+    margin-left: 10px;
+}
+
+.deleteTaskIcon, .editTaskIcon {
+    cursor: pointer;
+}
+
+.deleteTaskIcon:hover {
+    color: red;
+}
+
+.editTaskIcon:hover {
+    color: var(--secondaryColor);
+}
+
+
+.taskDetailsBtn {
+    padding: 2px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
