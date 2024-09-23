@@ -39,14 +39,14 @@
     margin-right: 6px;
 }
 
-.addTaskForm, .editTaskDiv {
+.addTaskForm, .editTaskDiv, .taskDetailsDiv {
     display: flex;
     flex-direction: column;
     max-height: 0;
     overflow: hidden;
 }
 
-.addTaskFormExpanded, .editTaskDivExpanded {
+.addTaskFormExpanded, .editTaskDivExpanded, .taskDetailsDivExpanded {
     margin: 20px;
     border: 1px solid black;
     padding: 10px;
@@ -85,7 +85,7 @@
     margin-right: 10px;
 }
 
-.addTaskBtn, .cancelTaskForm, .editTaskCancel, .editTaskConfirm {
+.addTaskBtn, .cancelTaskForm, .editTaskCancel, .editTaskConfirm, .taskDetailsCancelBtn {
     padding: 5px;
     margin-left: 10px;
     font-size: large;
@@ -98,7 +98,7 @@
     background-color: var(--secondaryColor);
 }
 
-.cancelTaskForm, .editTaskCancel {
+.cancelTaskForm, .editTaskCancel, .taskDetailsCancelBtn {
     background-color: var(--gray);
 }
 
@@ -169,4 +169,10 @@
 .editTaskChildDiv > *{
     margin: 10px;
     cursor: pointer;
+}
+
+.taskDetailsCancelDiv {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
 }
