@@ -46,7 +46,7 @@ const mainScreenDom = function () {
 
 
 
-const createTaskOnDom = function () {
+const createTaskOnDom = function (taskN, taskDt, dueD) {
     const tasksDiv = document.querySelector(".tasksDiv");
 
 
@@ -71,7 +71,7 @@ const createTaskOnDom = function () {
 
     taskDetails.type = "button";
     taskDetails.innerHTML = "Details";
-    dueDate.innerHTML = "10-12-2024";
+    dueDate.innerHTML = dueD;
     editTask.innerHTML = "<i class='fas fa-edit'></i>";
     deleteTask.innerHTML = "<i class='fa-solid fa-trash'></i>";
 
@@ -168,9 +168,9 @@ const createTaskOnDom = function () {
     parentDiv.appendChild(editTaskDiv);
 
     const taskName = document.querySelector(".cbx-lbl");
-    taskName.innerText = "Some stuff I have to do";
-    editTaskName.value = taskName.innerText;
-    editTaskDetails.value = "Do that stuff before it's too late.";
+    taskName.innerText = taskN;
+    editTaskName.value = taskN;
+    editTaskDetails.value = taskDt;
 
 
     editAndDetailsExpand();
@@ -224,11 +224,6 @@ const editAndDetailsExpand = function() {
     })
 
 
-
-
-    
-
-
     detailsTrigger.addEventListener("click", () => {
         detailsDiv.classList.toggle("taskDetailsDivExpanded");
         if (editDiv.className == "editTaskDiv editTaskDivExpanded") {
@@ -276,9 +271,9 @@ const taskDetailsDiv = function (div) {
 newTaskFormExpand();
 
 
-createTaskOnDom();
+createTaskOnDom("Some Stuff I have to do", "Do the stuff before it's too late!", "10-12-2025");
 
-
+export {createTaskOnDom};
 export default mainScreenDom;
 
 
