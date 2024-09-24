@@ -1,4 +1,4 @@
-
+import { createNewCheckboxElement } from "./createNewCheckBoxElement";
 
 const mainScreenDom = function () {
 
@@ -46,7 +46,7 @@ const mainScreenDom = function () {
 
 
 
-const createTaskOnDom = function (taskN, taskDt, dueD) {
+const createTaskOnDom = function (taskN, taskDt, dueDa) {
     const tasksDiv = document.querySelector(".tasksDiv");
 
 
@@ -64,14 +64,13 @@ const createTaskOnDom = function (taskN, taskDt, dueD) {
 
 
 
-    div.innerHTML = '<div class="checkbox-wrapper-52"><label for="todo-52" class="item"><input type="checkbox" id="todo-52" class="hidden"/><label for="todo-52" class="cbx"><svg width="14px" height="12px" viewBox="0 0 14 12"><polyline points="1 7.6 5 11 13 1"></polyline></svg></label><label for="todo-52" class="cbx-lbl">To-do</label></label></div>';
-
+    createNewCheckboxElement(div, taskN);
 
 
 
     taskDetails.type = "button";
     taskDetails.innerHTML = "Details";
-    dueDate.innerHTML = dueD;
+    dueDate.innerHTML = dueDa;
     editTask.innerHTML = "<i class='fas fa-edit'></i>";
     deleteTask.innerHTML = "<i class='fa-solid fa-trash'></i>";
 
@@ -84,6 +83,7 @@ const createTaskOnDom = function (taskN, taskDt, dueD) {
     dueDate.classList.add("dueDate");
     editTask.classList.add("editTaskIcon");
     deleteTask.classList.add("deleteTaskIcon");
+    parentDiv.classList.add("taskParentDiv");
 
 
 
@@ -107,7 +107,13 @@ const createTaskOnDom = function (taskN, taskDt, dueD) {
 
 
 
-    taskDetailsDiv(parentDiv);
+    const tDetailsDiv = document.createElement("div");
+
+    tDetailsDiv.innerHTML = '<div class="taskDetailsNameDiv"><span class="taskDetailsNameLabel">Name</span>&nbsp;<span class="taskDetailsName"></span></div><div class="taskDetailsdetailDiv"><span class="taskDetailsdetailLabel">Details:</span>&nbsp;<span class="taskDetailsdetail"></span></div><div class="taskDetailsDueDiv"><span class="taskDetailsDueLabel">Due Date:</span>&nbsp;<span class="taskDetailsDue"></span></div><div class="taskDetailsCancelDiv"><button class="taskDetailsCancelBtn" type="button">Cancel</button></div>';
+
+    tDetailsDiv.classList.add("taskDetailsDiv");
+
+    parentDiv.appendChild(tDetailsDiv);
 
 
 
@@ -163,17 +169,17 @@ const createTaskOnDom = function (taskN, taskDt, dueD) {
 
 
 
-    
+
     tasksDiv.appendChild(parentDiv);
     parentDiv.appendChild(editTaskDiv);
 
-    const taskName = document.querySelector(".cbx-lbl");
-    taskName.innerText = taskN;
+
+
     editTaskName.value = taskN;
     editTaskDetails.value = taskDt;
 
 
-    editAndDetailsExpand();
+    editAndDetailsExpand(tDetailsDiv, editTaskDiv);
 
 }
 
@@ -198,40 +204,41 @@ const newTaskFormExpand = function () {
 }
 
 
-const editAndDetailsExpand = function() {
-    const editTrigger = document.querySelector(".editTaskIcon");
-    const editTrigger2 = document.querySelector(".editTaskCancel");
-    const editDiv = document.querySelector(".editTaskDiv");
+const editAndDetailsExpand = function (detDiv, edDiv) {
+    const editTriggers = document.querySelectorAll(".editTaskIcon");
+    const editTriggers2 = document.querySelectorAll(".editTaskCancel");
 
+    const detailsTriggers = document.querySelectorAll(".taskDetailsBtn");
+    const detalisTriggers2 = document.querySelectorAll(".taskDetailsCancelBtn");
 
-
-    const detailsTrigger = document.querySelector(".taskDetailsBtn");
-    const detalisTrigger2 = document.querySelector(".taskDetailsCancelBtn");
-
-    const detailsDiv = document.querySelector(".taskDetailsDiv");
-
-
-
-    editTrigger.addEventListener("click", () => {
-        editDiv.classList.toggle("editTaskDivExpanded");
-        
-        if (detailsDiv.className == "taskDetailsDiv taskDetailsDivExpanded") {
-            detailsDiv.classList.remove("taskDetailsDivExpanded");
+    editTriggers.forEach((t) => {
+        t.addEventListener("click", () => {
+            edDiv.classList.toggle("editTaskDivExpanded")
+        })
+        if (detDiv.className == "taskDetailsDiv taskDetailsDivExpanded") {
+            detDiv.classList.remove("taskDetailsDivExpanded");
         }
     });
-    editTrigger2.addEventListener("click", () => {
-        editDiv.classList.toggle("editTaskDivExpanded");
+
+    editTriggers2.forEach((t) => {
+        edDiv.classList.toggle("editTaskDivExpanded");
     })
 
 
-    detailsTrigger.addEventListener("click", () => {
-        detailsDiv.classList.toggle("taskDetailsDivExpanded");
-        if (editDiv.className == "editTaskDiv editTaskDivExpanded") {
-            editDiv.classList.remove("editTaskDivExpanded");
-        }
+
+    detailsTriggers.forEach((t) => {
+        t.addEventListener("click", () => {
+            detDiv.classList.toggle("taskDetailsDivExpanded");
+            if (edDiv.className == "editTaskDiv editTaskDivExpanded") {
+                edDiv.classList.remove("editTaskDivExpanded");
+            }
+        })
     })
-    detalisTrigger2.addEventListener("click", () => {
-        detailsDiv.classList.toggle("taskDetailsDivExpanded");
+
+    detalisTriggers2.forEach((t) => {
+        t.addEventListener("click", () => {
+            detDiv.classList.toggle("taskDetailsDivExpanded");
+        })
     })
 }
 
@@ -241,21 +248,21 @@ const editAndDetailsExpand = function() {
 
 const taskDetailsDiv = function (div) {
 
-    const parentDiv = document.createElement("div");
-
-    
-
-
-    parentDiv.innerHTML = '<div class="taskDetailsNameDiv"><span class="taskDetailsNameLabel">Name</span>&nbsp;<span class="taskDetailsName"></span></div><div class="taskDetailsdetailDiv"><span class="taskDetailsdetailLabel">Details:</span>&nbsp;<span class="taskDetailsdetail"></span></div><div class="taskDetailsDueDiv"><span class="taskDetailsDueLabel">Due Date:</span>&nbsp;<span class="taskDetailsDue"></span></div><div class="taskDetailsCancelDiv"><button class="taskDetailsCancelBtn" type="button">Cancel</button></div>';
-
-
-    parentDiv.classList.add("taskDetailsDiv");
+    const tDetailsDiv = document.createElement("div");
 
 
 
 
+    tDetailsDiv.innerHTML = '<div class="taskDetailsNameDiv"><span class="taskDetailsNameLabel">Name</span>&nbsp;<span class="taskDetailsName"></span></div><div class="taskDetailsdetailDiv"><span class="taskDetailsdetailLabel">Details:</span>&nbsp;<span class="taskDetailsdetail"></span></div><div class="taskDetailsDueDiv"><span class="taskDetailsDueLabel">Due Date:</span>&nbsp;<span class="taskDetailsDue"></span></div><div class="taskDetailsCancelDiv"><button class="taskDetailsCancelBtn" type="button">Cancel</button></div>';
 
-    div.appendChild(parentDiv);
+
+    tDetailsDiv.classList.add("taskDetailsDiv");
+
+
+
+
+
+    tDetailsDiv.appendChild(parentDiv);
 
 
 
@@ -271,9 +278,32 @@ const taskDetailsDiv = function (div) {
 newTaskFormExpand();
 
 
-createTaskOnDom("Some Stuff I have to do", "Do the stuff before it's too late!", "10-12-2025");
 
-export {createTaskOnDom};
+
+
+
+
+
+const clearScreen = function () {
+    const parentDiv = document.querySelectorAll(".taskParentDiv");
+
+    parentDiv.forEach((div) => {
+        div.remove();
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+export { createTaskOnDom, clearScreen };
 export default mainScreenDom;
 
 

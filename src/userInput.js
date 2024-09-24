@@ -1,3 +1,7 @@
+import { clearScreen, createTaskOnDom } from "./mainScreenDom";
+
+
+
 class Todo {
     constructor(projectTitle, taskTitle, taskDetails, taskDate) {
         this.project = projectTitle;
@@ -15,18 +19,23 @@ const newTaskData = function () {
 
     const addTaskBtn = document.querySelector(".addTaskBtn");
     const taskName = document.querySelector("#taskName");
-    const taskDetails = document.querySelector("#taskDetails");
+    const taskDetail = document.querySelector("#taskDetails");
     const project = document.querySelector("#project");
-    const taskDate = document.querySelector("#taskDate");
+    const taskdate = document.querySelector("#taskDate");
 
 
 const todos = [];
 
     addTaskBtn.addEventListener("click", () => {
 
-        if (taskName.value != "" && taskDetails.value != "" && taskDate.value != "") {
-            const todo = new Todo(project.value, taskName.value, taskDetails.value, taskDate.value);
-            todos.push(todo);
+        if (taskName.value != "" && taskDetail.value != "" && taskdate.value != "") {
+            const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value);
+            todos.push(newTodo);
+            clearScreen();
+            todos.forEach((todo) => {
+                createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate);
+            })
+
         } else {
             alert("Please Input all the fields");
         }
