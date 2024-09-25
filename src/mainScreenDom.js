@@ -116,7 +116,7 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID) {
 
     const tDetailsDiv = document.createElement("div", ID);
     tDetailsDiv.id = ID + "DetailsDiv";
-    taskDetailDiv(tDetailsDiv, ID);
+    taskDetailDiv(tDetailsDiv, ID, taskN, taskDt, dueDa);
 
 
     tDetailsDiv.classList.add("taskDetailsDiv");
@@ -149,7 +149,13 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID) {
 
 
 
+
+
     editTaskDiv.id = ID + "EditDiv";
+    editTaskName.id = ID + "EditTaskName";
+    editTaskDetails.id = ID + "EditTaskDetails";
+    editTaskDate.id = ID + "EditTaskDate";
+    
 
 
 
@@ -190,6 +196,7 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID) {
 
     editTaskName.value = taskN;
     editTaskDetails.value = taskDt;
+    editTaskDate.value = dueDa;
 
 
 
@@ -261,12 +268,21 @@ const idExists = function (id, objArr) {
 };
 
 
-
+const projIDExists = function (i) {
+    const li = document.querySelectorAll(".PMLitems");
+    for (let l of li) {
+        if (l.id === i) {
+            return true;  
+        }
+    }
+    
+    return false;  
+};
 
 
 const addProjectHandle = function () {
 
-     
+
 
     const addProjectBtn = document.querySelector(".APFbtn1");
     addProjectBtn.addEventListener("click", () => {
@@ -278,13 +294,20 @@ const addProjectHandle = function () {
 
 
         if (newProjectR != "") {
-            addProjectToDropDown(newProjectR, nP);
-            const li = document.createElement("li");
-            li.classList.add("HMLitems");
-            li.classList.add("PMLitems");
-            li.id = newProjectR;
-            li.innerText = newProject.value;
-            projectsList.appendChild(li);
+            if (projIDExists(newProjectR)) {
+                alert("Project Already Exists")
+            } else {
+                addProjectToDropDown(newProjectR, nP);
+                const li = document.createElement("li");
+                li.classList.add("HMLitems");
+                li.classList.add("PMLitems");
+                li.id = newProjectR;
+                li.innerText = newProject.value;
+                projectsList.appendChild(li);
+            }
+
+        } else {
+            alert("Please Add a Project Name");
         }
     })
 
@@ -295,9 +318,8 @@ const addProjectHandle = function () {
 
 
 
-const addProjectToDropDown = function(vl, name) {
+const addProjectToDropDown = function (vl, name) {
     const projectDropDown = document.querySelector("#project");
-    console.log(projectDropDown);
     const option = document.createElement("option");
     option.value = vl;
     option.innerText = name;

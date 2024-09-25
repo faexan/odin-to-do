@@ -2,6 +2,8 @@ import { clearScreen, createTaskOnDom, deleteTask, idExists } from "./mainScreen
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
 
+import { taskEdit } from "./taskEdit";
+
 
 const newTaskData = function () {
 
@@ -32,14 +34,12 @@ const newTaskData = function () {
                     createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID);
                 })
                 editAndDetailsExpand();
-
                 deleteTask(todos);
-
-
+                taskEdit(todos);
             }
 
         } else {
-            alert("Please Input all the fields");
+            alert("Please Input all the fields!");
         }
 
 

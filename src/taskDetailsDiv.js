@@ -1,4 +1,4 @@
-const taskDetailDiv = function(tDetailsDiv, ID) {
+const taskDetailDiv = function(tDetailsDiv, ID, taskN, taskDtl, taskd) {
 
 
 
@@ -18,10 +18,11 @@ taskDetailsCancelDiv.classList.add('taskDetailsCancelDiv');
 // Create inner elements for taskDetailsNameDiv
 let taskDetailsNameLabel = document.createElement('span');
 taskDetailsNameLabel.classList.add('taskDetailsNameLabel');
-taskDetailsNameLabel.textContent = 'Name';
+taskDetailsNameLabel.textContent = 'Name: ';
 
 let taskDetailsName = document.createElement('span');
 taskDetailsName.classList.add('taskDetailsName');
+taskDetailsName.textContent = taskN;
 
 // Append inner elements to taskDetailsNameDiv
 taskDetailsNameDiv.appendChild(taskDetailsNameLabel);
@@ -35,6 +36,7 @@ taskDetailsdetailLabel.textContent = 'Details:';
 
 let taskDetailsdetail = document.createElement('span');
 taskDetailsdetail.classList.add('taskDetailsdetail');
+taskDetailsdetail.textContent = taskDtl;
 
 // Append inner elements to taskDetailsdetailDiv
 taskDetailsdetailDiv.appendChild(taskDetailsdetailLabel);
@@ -48,6 +50,7 @@ taskDetailsDueLabel.textContent = 'Due Date:';
 
 let taskDetailsDue = document.createElement('span');
 taskDetailsDue.classList.add('taskDetailsDue');
+taskDetailsDue.textContent = taskd;
 
 // Append inner elements to taskDetailsDueDiv
 taskDetailsDueDiv.appendChild(taskDetailsDueLabel);

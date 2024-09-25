@@ -58,11 +58,20 @@
     transition: max-height 0.4s ease;
 }
 
-#taskName, #taskDetails, .editTaskName, .editTaskDetails {
+#taskName, #taskDetails, .editTaskName, .editTaskDetails, .taskDetailsNameDiv, .taskDetailsdetailDiv, .taskDetailsDueDiv {
     padding: 10px;
     outline: none;
     font-size: large;
     border-bottom: 1px solid var(--secondaryColor);
+}
+
+.taskDetailsCancelBtn {
+    margin: 28px;
+}
+
+
+.taskDetailsCancelBtn:hover, input[type = "date"]:hover, select:hover, .cancelTaskForm:hover, .addTaskBtn:hover {
+    cursor: pointer;
 }
 
 .addTaskFormDiv {
