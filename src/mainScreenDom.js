@@ -233,18 +233,18 @@ const clearScreen = function () {
 
 
 
-const deleteTask = function(objArr) {
+const deleteTask = function (objArr) {
 
     const deleteIcons = document.querySelectorAll(".deleteTaskIcon");
 
-    deleteIcons.forEach((icon)=> {
+    deleteIcons.forEach((icon) => {
         icon.addEventListener("click", () => {
             let iconID = icon.id;
             let taskID = iconID.slice(0, -10);
             const task = document.getElementById(taskID);
             task.remove();
             for (let i = 0; i < objArr.length; i++) {
-                if(objArr[i].ID = taskID) {
+                if (objArr[i].ID = taskID) {
                     objArr.splice(i, 1);
                 }
             }
@@ -255,7 +255,7 @@ const deleteTask = function(objArr) {
 
 
 
-    
+
 const idExists = function (id, objArr) {
     return objArr.some((obj) => obj.ID === id);
 };
@@ -264,7 +264,30 @@ const idExists = function (id, objArr) {
 
 
 
+const addProjectHandle = function () {
 
+    const addProjectBtn = document.querySelector(".APFbtn1");
+    addProjectBtn.addEventListener("click", () => {
+        const projectsList = document.querySelector(".projectsList");
+
+        const newProject = document.querySelector("#newProject");
+        const nP = newProject.value;
+        console.log(newProject.value);
+        const newProjectR = nP.replace(/\s/g, "");
+
+        console.log("regex", newProjectR);
+        if (newProjectR != "") {
+            const li = document.createElement("li");
+            li.classList.add("HMLitems");
+            li.classList.add("PMLitems");
+            li.id = newProjectR;
+            li.innerText = newProject.value;
+            projectsList.appendChild(li);
+        }
+    })
+
+
+}
 
 
 
@@ -275,6 +298,7 @@ const idExists = function (id, objArr) {
 
 
 export { createTaskOnDom, clearScreen, deleteTask, idExists };
+export { addProjectHandle };
 export default mainScreenDom;
 
 
