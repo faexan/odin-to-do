@@ -1,4 +1,5 @@
-import { clearScreen, createTaskOnDom, editAndDetailsExpand } from "./mainScreenDom";
+import { clearScreen, createTaskOnDom, deleteTask, idExists } from "./mainScreenDom";
+import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
 
 
@@ -17,15 +18,27 @@ const newTaskData = function () {
     addTaskBtn.addEventListener("click", () => {
 
         if (taskName.value != "" && taskDetail.value != "" && taskdate.value != "") {
-            let sp = project.value + taskName.value;
+
+            let sp = project.value + taskName.value + taskdate.value;
             const id = sp.replace(/\s/g, "");
-            const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value, id);
-            todos.push(newTodo);
-            clearScreen();
-            todos.forEach((todo) => {
-                createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID);
-            })
-            editAndDetailsExpand();
+            console.log(idExists(id, todos));
+            if (idExists(id, todos)) {
+                alert("Todo Already Exist!");
+            } else {
+
+                const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value, id);
+                todos.push(newTodo);
+                clearScreen();
+                todos.forEach((todo) => {
+                    createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID);
+                })
+                editAndDetailsExpand();
+
+                deleteTask(todos);
+
+
+            }
+
         } else {
             alert("Please Input all the fields");
         }
