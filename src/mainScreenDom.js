@@ -266,17 +266,19 @@ const idExists = function (id, objArr) {
 
 const addProjectHandle = function () {
 
+     
+
     const addProjectBtn = document.querySelector(".APFbtn1");
     addProjectBtn.addEventListener("click", () => {
         const projectsList = document.querySelector(".projectsList");
 
         const newProject = document.querySelector("#newProject");
         const nP = newProject.value;
-        console.log(newProject.value);
         const newProjectR = nP.replace(/\s/g, "");
 
-        console.log("regex", newProjectR);
+
         if (newProjectR != "") {
+            addProjectToDropDown(newProjectR, nP);
             const li = document.createElement("li");
             li.classList.add("HMLitems");
             li.classList.add("PMLitems");
@@ -293,7 +295,14 @@ const addProjectHandle = function () {
 
 
 
-
+const addProjectToDropDown = function(vl, name) {
+    const projectDropDown = document.querySelector("#project");
+    console.log(projectDropDown);
+    const option = document.createElement("option");
+    option.value = vl;
+    option.innerText = name;
+    projectDropDown.appendChild(option);
+}
 
 
 

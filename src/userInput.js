@@ -21,7 +21,6 @@ const newTaskData = function () {
 
             let sp = project.value + taskName.value + taskdate.value;
             const id = sp.replace(/\s/g, "");
-            console.log(idExists(id, todos));
             if (idExists(id, todos)) {
                 alert("Todo Already Exist!");
             } else {
