@@ -1,17 +1,5 @@
-import { clearScreen, createTaskOnDom } from "./mainScreenDom";
-
-
-
-class Todo {
-    constructor(projectTitle, taskTitle, taskDetails, taskDate) {
-        this.project = projectTitle;
-        this.taskTitle = taskTitle;
-        this.taskDetails = taskDetails;
-        this.taskDate = taskDate;
-        this.status = false;
-    }
-}
-
+import { clearScreen, createTaskOnDom, editAndDetailsExpand } from "./mainScreenDom";
+import { Todo } from "./logic";
 
 
 const newTaskData = function () {
@@ -24,18 +12,20 @@ const newTaskData = function () {
     const taskdate = document.querySelector("#taskDate");
 
 
-const todos = [];
+    const todos = [];
 
     addTaskBtn.addEventListener("click", () => {
 
         if (taskName.value != "" && taskDetail.value != "" && taskdate.value != "") {
-            const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value);
+            let sp = project.value + taskName.value;
+            const id = sp.replace(/\s/g, "");
+            const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value, id);
             todos.push(newTodo);
             clearScreen();
             todos.forEach((todo) => {
-                createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate);
+                createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID);
             })
-
+            editAndDetailsExpand();
         } else {
             alert("Please Input all the fields");
         }
