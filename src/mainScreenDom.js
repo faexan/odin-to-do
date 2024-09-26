@@ -155,7 +155,7 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID) {
     editTaskName.id = ID + "EditTaskName";
     editTaskDetails.id = ID + "EditTaskDetails";
     editTaskDate.id = ID + "EditTaskDate";
-    
+
 
 
 
@@ -251,7 +251,7 @@ const deleteTask = function (objArr) {
             const task = document.getElementById(taskID);
             task.remove();
             for (let i = 0; i < objArr.length; i++) {
-                if (objArr[i].ID = taskID) {
+                if (objArr[i].ID == taskID) {
                     objArr.splice(i, 1);
                 }
             }
@@ -260,6 +260,30 @@ const deleteTask = function (objArr) {
 
 }
 
+
+const deleteTodayTask = function (objArr) {
+
+    const deleteIcons = document.querySelectorAll(".deleteTaskIcon");
+    let arr = [];
+
+    for (let i = 0; i < deleteIcons.length; i++) {
+        deleteIcons[i].addEventListener("click", () => {
+            let iconID = deleteIcons[i].id;
+            let taskID = iconID.slice(0, -10);
+            const task = document.getElementById(taskID);
+            task.remove();
+            arr.push(taskID);
+
+            for (let i = 0; i < objArr.length; i++) {
+                if (objArr[i ].ID == taskID) {
+                    objArr.splice(i, 1);
+                }
+            }
+
+            return arr;
+        })
+    }
+}
 
 
 
@@ -272,11 +296,11 @@ const projIDExists = function (i) {
     const li = document.querySelectorAll(".PMLitems");
     for (let l of li) {
         if (l.id === i) {
-            return true;  
+            return true;
         }
     }
-    
-    return false;  
+
+    return false;
 };
 
 
@@ -328,7 +352,7 @@ const addProjectToDropDown = function (vl, name) {
 
 
 
-export { createTaskOnDom, clearScreen, deleteTask, idExists };
+export { createTaskOnDom, clearScreen, deleteTask, idExists, deleteTodayTask };
 export { addProjectHandle };
 export default mainScreenDom;
 

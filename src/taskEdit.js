@@ -1,8 +1,8 @@
 import { clearScreen, createTaskOnDom } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
-import { deleteTask } from "./mainScreenDom"; 
+import { deleteTask } from "./mainScreenDom";
 
-const taskEdit = function(todosArr) {
+const taskEdit = function (todosArr) {
     const editTaskConfirmBtns = document.querySelectorAll(".editTaskConfirm");
     editTaskConfirmBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -19,17 +19,19 @@ const taskEdit = function(todosArr) {
 
             if (editTaskName.value != "" && editTaskDetails.value != "" && editTaskDate.value != "") {
                 todosArr.forEach((todo) => {
-                    if(todo.ID == taskID) {
+                    let sp = todo.project + editTaskName.value + editTaskDate.value;
+                    const id = sp.replace(/\s/g, "");
+                    if (todo.ID == taskID) {
                         todo.taskTitle = editTaskName.value;
                         todo.taskDetails = editTaskDetails.value;
                         todo.taskDate = editTaskDate.value;
+                        todo.ID = id;
                     }
                 })
                 clearScreen();
                 todosArr.forEach((t) => {
                     createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID);
                 })
-                console.log(todosArr);
                 editAndDetailsExpand();
                 deleteTask(todosArr);
                 taskEdit(todosArr);
@@ -47,4 +49,4 @@ const taskEdit = function(todosArr) {
 }
 
 
-export {taskEdit};
+export { taskEdit };

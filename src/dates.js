@@ -25,15 +25,10 @@ const todayTodos = function (todos) {
         const todayMonth = today.getMonth() + 1;
         const todayDate = today.getDate();
         const todayYear = today.getFullYear();
-        console.log(todayMonth, todayDate, todayYear);
         const taskD = todo.taskDate;
-        console.log("Task full Date: ", taskD);
         const taskDate = Number(taskD.substr(8,2));
-        console.log("Task Date: ", taskDate);
         const taskMonth = Number(taskD.substr(5,2));
-        console.log("Task Month: ", taskMonth);
         const taskYear = Number(taskD.substr(0,4));
-        console.log("Task Year: ", taskYear)
 
 
 
@@ -43,10 +38,6 @@ const todayTodos = function (todos) {
 
         
     })
-
-
-
-    console.log(arr);
 
 
     return arr;

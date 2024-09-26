@@ -1,14 +1,16 @@
-import { clearScreen, createTaskOnDom, deleteTask, idExists } from "./mainScreenDom";
+import { clearScreen, createTaskOnDom, deleteTask, idExists, deleteTodayTask } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
-import {  todayTodos } from "./dates";
+import { todayTodos } from "./dates";
 
 import { taskEdit } from "./taskEdit";
 
 
-const todayTasksBtn = document.querySelector("#todayTasks")
+const todayTasksBtn = document.querySelector("#todayTasks");
+const allTasksBtn = document.querySelector("#allTasks")
 
 const todos = [];
+const filteredTodayTodos = [];
 
 const newTaskData = function () {
 
@@ -58,6 +60,35 @@ const newTaskData = function () {
 
 
 }
+
+
+// Event listener for showing today's tasks
+todayTasksBtn.addEventListener("click", () => {
+    clearScreen();
+    const filteredTodayTodos = todayTodos(todos);  // Filter todos for today
+
+    filteredTodayTodos.forEach((t) => {
+        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID);
+    });
+
+    editAndDetailsExpand();
+    deleteTodayTask(todos);
+    taskEdit(filteredTodayTodos);
+
+    
+});
+
+// Event listener for showing all tasks
+allTasksBtn.addEventListener("click", () => {
+    clearScreen();
+    todos.forEach((t) => {
+        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID);
+    });
+
+    editAndDetailsExpand();
+    deleteTask(todos);
+    taskEdit(todos);
+});
 
 
 export { newTaskData };
