@@ -11,11 +11,11 @@ import { logic } from "./logic.js";
 import mainScreenDom from "./mainScreenDom.js";
 import { newTaskData } from "./userInput.js";
 import { addProjectHandle } from "./mainScreenDom.js";
-import { date } from "./dates.js";
+
 
 mainScreenDom();
 addProjectHandle();
 menuDisplay();
 
-date();
+
 newTaskData();

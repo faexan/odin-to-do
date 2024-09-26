@@ -1,9 +1,14 @@
 import { clearScreen, createTaskOnDom, deleteTask, idExists } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
+import { todayTodos, todayTodos } from "./dates";
 
 import { taskEdit } from "./taskEdit";
 
+
+const todayTasksBtn = document.querySelector("#todayTasks")
+
+const todos = [];
 
 const newTaskData = function () {
 
@@ -15,7 +20,7 @@ const newTaskData = function () {
     const taskdate = document.querySelector("#taskDate");
 
 
-    const todos = [];
+
 
     addTaskBtn.addEventListener("click", () => {
 
@@ -36,6 +41,7 @@ const newTaskData = function () {
                 editAndDetailsExpand();
                 deleteTask(todos);
                 taskEdit(todos);
+
             }
 
         } else {
