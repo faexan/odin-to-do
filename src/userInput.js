@@ -1,7 +1,7 @@
 import { clearScreen, createTaskOnDom, deleteTask, idExists } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
-import { todayTodos, todayTodos } from "./dates";
+import {  todayTodos } from "./dates";
 
 import { taskEdit } from "./taskEdit";
 
