@@ -18,4 +18,15 @@ addProjectHandle();
 menuDisplay();
 
 
+
+const date = new Date("2024-02-31");
+const date2 = new Date("2025-05-12");
+
+console.log(date > date2)
+console.log(date < date2)
+
+const d = new Date();
+
+
+
 newTaskData();

@@ -73,7 +73,7 @@ todayTasksBtn.addEventListener("click", () => {
 
     editAndDetailsExpand();
     deleteTodayTask(todos);
-    taskEdit(filteredTodayTodos);
+    taskEdit(todos);
 
     
 });

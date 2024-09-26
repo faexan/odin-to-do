@@ -9,6 +9,13 @@ class Todo {
     }
 }
 
+class Project {
+    constructor(name, id) {
+        this.name = name;
+        this.ID = id;
+    }
+}
+
 
 
 
@@ -31,4 +38,4 @@ export { logic };
 
 
 
-export { Todo };
+export { Todo, Project };

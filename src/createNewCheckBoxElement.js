@@ -1,9 +1,9 @@
-let counter = 0; // A counter to generate unique IDs for each element
 
-function createNewCheckboxElement(div, title) {
-  counter++;
+
+function createNewCheckboxElement(div, title, id) {
+  let counter = id;
   
-  // Create elements dynamically
+  
   const wrapper = document.createElement('div');
   wrapper.classList.add('checkbox-wrapper-52');
 

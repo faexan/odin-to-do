@@ -1,7 +1,25 @@
 import { createNewCheckboxElement } from "./createNewCheckBoxElement";
 import { taskDetailDiv } from "./taskDetailsDiv";
 
+
+import { Project } from "./logic";
+
 const mainScreenDom = function () {
+
+
+    // const taskDateInput = document.querySelector("#taskDate");
+    // const tDay = new Date();
+    // const date = Number(tDay.getDate());
+    // const s1Month  = tDay.getUTCMonth().toString();
+    // const year = tDay.getFullYear();
+    // let month = sMonth.toString();
+    // if (s1Month.length < 2) {
+    //     month = "0" + sMonth;
+    // }
+    // const fullDate = year + "-" + month + "-" + date;
+
+
+
 
     const alltasksDiv = document.querySelector(".allTasksDiv");
     const todayTasksDiv = document.querySelector(".todayTasksDiv");
@@ -65,7 +83,7 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID) {
 
 
 
-    createNewCheckboxElement(div, taskN);
+    createNewCheckboxElement(div, taskN, ID);
 
 
 
@@ -275,7 +293,7 @@ const deleteTodayTask = function (objArr) {
             arr.push(taskID);
 
             for (let i = 0; i < objArr.length; i++) {
-                if (objArr[i ].ID == taskID) {
+                if (objArr[i].ID == taskID) {
                     objArr.splice(i, 1);
                 }
             }
@@ -292,10 +310,9 @@ const idExists = function (id, objArr) {
 };
 
 
-const projIDExists = function (i) {
-    const li = document.querySelectorAll(".PMLitems");
-    for (let l of li) {
-        if (l.id === i) {
+const projIDExists = function (j, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].ID === j) {
             return true;
         }
     }
@@ -303,6 +320,7 @@ const projIDExists = function (i) {
     return false;
 };
 
+const ProjectsArr = [new Project("Default", "defaultProject")];
 
 const addProjectHandle = function () {
 
@@ -310,7 +328,6 @@ const addProjectHandle = function () {
 
     const addProjectBtn = document.querySelector(".APFbtn1");
     addProjectBtn.addEventListener("click", () => {
-        const projectsList = document.querySelector(".projectsList");
 
         const newProject = document.querySelector("#newProject");
         const nP = newProject.value;
@@ -318,16 +335,14 @@ const addProjectHandle = function () {
 
 
         if (newProjectR != "") {
-            if (projIDExists(newProjectR)) {
+            if (projIDExists(newProjectR, ProjectsArr)) {
                 alert("Project Already Exists")
             } else {
-                addProjectToDropDown(newProjectR, nP);
-                const li = document.createElement("li");
-                li.classList.add("HMLitems");
-                li.classList.add("PMLitems");
-                li.id = newProjectR;
-                li.innerText = newProject.value;
-                projectsList.appendChild(li);
+                const newProj = new Project(newProject.value, newProjectR)
+                ProjectsArr.push(newProj);
+                clearProjects();
+                addProjectToDropDown(ProjectsArr);
+                addProjectToDom(ProjectsArr, newProject.value);
             }
 
         } else {
@@ -336,18 +351,67 @@ const addProjectHandle = function () {
     })
 
 
+
+
+
+
+
+
 }
 
 
 
+const addProjectToDom = function (objArr) {
+
+    const projectsList = document.querySelector(".projectsList");
 
 
-const addProjectToDropDown = function (vl, name) {
+    objArr.forEach((obj) => {
+        const li = document.createElement("li");
+        li.classList.add("HMLitems");
+        li.classList.add("PMLitems");
+        li.id = obj.ID;
+        li.innerText = obj.name;
+        projectsList.appendChild(li);
+    })
+}
+
+
+const projectsHeading = function () {
+    const btns = document.querySelectorAll(".PMLitems");
+
+
+}
+
+
+
+const clearProjects = function () {
+    const btns = document.querySelectorAll(".PMLitems");
+    btns.forEach((btn) => {
+        btn.remove();
+    })
+}
+
+
+
+const addProjectToDropDown = function (objArr) {
     const projectDropDown = document.querySelector("#project");
-    const option = document.createElement("option");
-    option.value = vl;
-    option.innerText = name;
-    projectDropDown.appendChild(option);
+    prjoctsDropDownClr();
+    objArr.forEach((obj) => {
+        const option = document.createElement("option");
+        option.value = obj.id;
+        option.innerText = obj.name;
+        projectDropDown.appendChild(option);
+    })
+
+}
+
+
+const prjoctsDropDownClr = function () {
+    const options = document.querySelectorAll("option");
+    options.forEach((o)=> {
+        o.remove();
+    })
 }
 
 

@@ -46,7 +46,26 @@ const todayTodos = function (todos) {
 
 
 
+const weekTodos = function(todos) {
+    let arr = [];
 
+    todos.forEach((todo) => {
+        const today = new Date();
+        const todayMonth = today.getMonth();
+        const todayDate = today.getDate();
+        const todayYear = today.getFullYear();
+
+        const taskD = todo.taskDate;
+        const taskDate = Number(taskD.substr(8,2));
+        const taskMonth = Number(taskD.substr(5,2));
+        const taskYear = Number(taskD.substr(0,4));
+
+
+
+    })
+
+
+}
 
 
 
