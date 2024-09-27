@@ -1,6 +1,7 @@
 import { clearScreen, createTaskOnDom } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { deleteTask } from "./mainScreenDom";
+import { saveTasksInLocalStorage } from "./localStorage";
 
 const taskEdit = function (todosArr) {
     const editTaskConfirmBtns = document.querySelectorAll(".editTaskConfirm");
@@ -28,6 +29,7 @@ const taskEdit = function (todosArr) {
                         todo.ID = id;
                     }
                 })
+                saveTasksInLocalStorage(todosArr);
                 clearScreen();
                 todosArr.forEach((t) => {
                     createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);

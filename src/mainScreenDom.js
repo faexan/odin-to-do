@@ -7,6 +7,7 @@ import { Project } from "./logic";
 import { addDays, format } from 'date-fns';
 import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
+import { saveTasksInLocalStorage } from "./localStorage";
 
 const mainScreenDom = function () {
 
@@ -236,6 +237,7 @@ const newTaskFormExpand = function () {
 
     trigger.addEventListener("click", () => {
         form.classList.toggle("addTaskFormExpanded");
+        
     });
 
     trigger2.addEventListener("click", () => {
@@ -281,6 +283,7 @@ const deleteTask = function (objArr) {
                     objArr.splice(i, 1);
                 }
             }
+            saveTasksInLocalStorage(objArr);
         })
     })
 
@@ -305,7 +308,7 @@ const deleteTodayTask = function (objArr) {
                     objArr.splice(i, 1);
                 }
             }
-
+            saveTasksInLocalStorage(arr);
             return arr;
         })
     }

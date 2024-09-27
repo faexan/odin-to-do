@@ -1,3 +1,4 @@
+import { saveTasksInLocalStorage } from "./localStorage";
 
 
 
@@ -20,6 +21,7 @@ const checkTaskStatus = function (todosArr) {
                     }
                 })
             }
+            saveTasksInLocalStorage(todosArr);
         })
     })
 

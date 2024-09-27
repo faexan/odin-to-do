@@ -1,3 +1,4 @@
+import { saveTasksInLocalStorage } from "./localStorage";
 
 
 
@@ -31,7 +32,7 @@ const markImpt = function(objArr) {
                     }
                 } 
             })
-            console.log(objArr);
+            saveTasksInLocalStorage(objArr);
         })
     })
 

@@ -7,13 +7,16 @@ import { taskEdit } from "./taskEdit";
 import { addProjectHandle } from "./mainScreenDom";
 import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
-
+import { saveTasksInLocalStorage } from "./localStorage";
 
 const todayTasksBtn = document.querySelector("#todayTasks");
 const allTasksBtn = document.querySelector("#allTasks");
 const weekyBtn = document.querySelector("#sevenDaysTasks");
 const imptortantTasksBtn = document.querySelector("#impTasks");
-const todos = [];
+
+
+
+const todos = JSON.parse(localStorage.getItem('tasks')) || [];
 
 
 const newTaskData = function () {
@@ -50,6 +53,7 @@ const newTaskData = function () {
                 deleteTask(todos);
                 taskEdit(todos);
                 markImpt(todos);
+                saveTasksInLocalStorage(todos);
             }
 
         } else {
@@ -81,6 +85,7 @@ todayTasksBtn.addEventListener("click", () => {
     deleteTodayTask(todos);
     taskEdit(todos);
     markImpt(todos);
+    saveTasksInLocalStorage(todos);
 });
 
 // Event listener for showing all tasks
@@ -94,7 +99,7 @@ allTasksBtn.addEventListener("click", () => {
     deleteTask(todos);
     taskEdit(todos);
     markImpt(todos);
-    console.log(todos);
+    saveTasksInLocalStorage(todos);
 });
 
 
@@ -109,6 +114,7 @@ weekyBtn.addEventListener("click", () => {
     deleteTodayTask(todos);
     taskEdit(todos);
     markImpt(todos);
+    saveTasksInLocalStorage(todos);
 })
 
 imptortantTasksBtn.addEventListener("click", () => {
