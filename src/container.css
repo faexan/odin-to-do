@@ -141,7 +141,7 @@
     padding: 0 20px;
 }
 
-.deleteTaskIcon, .editTaskIcon, .dueDate {
+.deleteTaskIcon, .editTaskIcon, .dueDate, .star {
     margin-left: 10px;
 }
 
@@ -157,6 +157,18 @@
     color: var(--secondaryColor);
 }
 
+.star {
+    color: white;
+}
+
+.star:hover {
+    cursor: pointer;
+    color: gold;
+}
+
+.starChecked {
+    color: gold;
+}
 
 .taskDetailsBtn {
     padding: 2px 20px;

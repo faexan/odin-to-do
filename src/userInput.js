@@ -6,6 +6,9 @@ import { projectsFilter } from "./Project_filter";
 import { taskEdit } from "./taskEdit";
 import { addProjectHandle } from "./mainScreenDom";
 import { checkTaskStatus } from "./taskStatus";
+import { markImpt } from "./markImportant";
+
+
 const todayTasksBtn = document.querySelector("#todayTasks");
 const allTasksBtn = document.querySelector("#allTasks");
 const weekyBtn = document.querySelector("#sevenDaysTasks");
@@ -35,17 +38,17 @@ const newTaskData = function () {
                 alert("Todo Already Exist!");
             } else {
 
-                const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value, id, false);
+                const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value, id, false, false);
                 todos.push(newTodo);
                 clearScreen();
                 todos.forEach((todo) => {
-                    createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID, todo.status);
+                    createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID, todo.status, todo.important);
                 })
                 checkTaskStatus(todos);
                 editAndDetailsExpand();
                 deleteTask(todos);
                 taskEdit(todos);
-
+                markImpt(todos);
             }
 
         } else {
@@ -70,26 +73,28 @@ todayTasksBtn.addEventListener("click", () => {
     const filteredTodayTodos = todayTodos(todos);  // Filter todos for today
 
     filteredTodayTodos.forEach((t) => {
-        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status);
+        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);
     });
     checkTaskStatus(todos)
     editAndDetailsExpand();
     deleteTodayTask(todos);
     taskEdit(todos);
-
-
+    markImpt(todos);
+    console.log(todos)
 });
 
 // Event listener for showing all tasks
 allTasksBtn.addEventListener("click", () => {
     clearScreen();
     todos.forEach((t) => {
-        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status);
+        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);
     });
     checkTaskStatus(todos);
     editAndDetailsExpand();
     deleteTask(todos);
     taskEdit(todos);
+    markImpt(todos);
+    console.log(todos);
 });
 
 
@@ -97,12 +102,14 @@ weekyBtn.addEventListener("click", () => {
     clearScreen();
     const weeklyTodos = weekTodos(todos);
     weeklyTodos.forEach((t) => {
-        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status)
+        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important)
     })
     checkTaskStatus(todos);
     editAndDetailsExpand();
     deleteTodayTask(todos);
     taskEdit(todos);
+    markImpt(todos);
+    console.log(todos);
 })
 
 

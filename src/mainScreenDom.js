@@ -7,14 +7,13 @@ import { Project } from "./logic";
 import { addDays, format } from 'date-fns';
 import { checkTaskStatus } from "./taskStatus";
 
-
 const mainScreenDom = function () {
 
 
     const taskDateInput = document.querySelector("#taskDate");
     const tDay = new Date();
     const formattedDate = format(tDay, "yyyy-MM-dd");
-
+    taskDateInput.value = formattedDate;
     taskDateInput.setAttribute("min", formattedDate);
 
     const alltasksDiv = document.querySelector(".allTasksDiv");
@@ -61,7 +60,7 @@ const mainScreenDom = function () {
 
 
 
-const createTaskOnDom = function (taskN, taskDt, dueDa, ID, status) {
+const createTaskOnDom = function (taskN, taskDt, dueDa, ID, status, imp) {
     const tasksDiv = document.querySelector(".tasksDiv");
 
 
@@ -89,7 +88,18 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID, status) {
     editTask.innerHTML = "<i class='fas fa-edit'></i>";
     deleteTask.innerHTML = "<i class='fa-solid fa-trash'></i>";
 
+    const star = document.createElement("span");
+    star.setAttribute('class', 'star');
+    star.setAttribute('type', 'checkbox');
+    star.setAttribute('title', 'Mark Important');
+    star.id = ID + "star";
+    star.innerHTML = '<i class="fa-solid fa-star"></i>';
 
+    if (imp == true) {
+        star.style.color = "gold"
+    } else if (imp == false) {
+        star.style.color = "white";
+    }
 
     mainDiv.classList.add("tasks");
 
@@ -117,6 +127,7 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID, status) {
 
     div2.appendChild(taskDetails);
     div2.appendChild(dueDate);
+    div2.appendChild(star);
     div2.appendChild(editTask);
     div2.appendChild(deleteTask);
 
@@ -351,7 +362,7 @@ const addProjectHandle = function (todosArr) {
                         clearScreen();
                         const filteredProjectTodo = projectsFilter(todosArr, id);
                         filteredProjectTodo.forEach((t) => {
-                            createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status);
+                            createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);
                         });
                         editAndDetailsExpand();
                         deleteTodayTask(todosArr);
