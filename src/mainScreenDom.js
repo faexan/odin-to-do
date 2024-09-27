@@ -6,6 +6,7 @@ import { taskEdit } from "./taskEdit";
 import { Project } from "./logic";
 import { addDays, format } from 'date-fns';
 import { checkTaskStatus } from "./taskStatus";
+import { markImpt } from "./markImportant";
 
 const mainScreenDom = function () {
 
@@ -329,11 +330,29 @@ const projIDExists = function (j, arr) {
 
 const ProjectsArr = [new Project("Default", "default")];
 
+const initialProjectHandle = function (todosArr) {
+    const initialDefaultProject = document.querySelector("#defaultProject");
+    if (initialDefaultProject) {
+
+        initialDefaultProject.addEventListener("click", () => {
+            clearScreen();
+            const filteredProjectTodo = projectsFilter(todosArr, "default");
+            filteredProjectTodo.forEach((t) => {
+                createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);
+            });
+            editAndDetailsExpand();
+            deleteTodayTask(todosArr);
+            taskEdit(todosArr);
+            checkTaskStatus(todosArr);
+            markImpt(todosArr);
+        })
+
+    }
+
+}
+
+
 const addProjectHandle = function (todosArr) {
-
-    
-
-
     const addProjectBtn = document.querySelector(".APFbtn1");
     addProjectBtn.addEventListener("click", () => {
 
@@ -358,7 +377,6 @@ const addProjectHandle = function (todosArr) {
                 projects.forEach((project) => {
                     project.addEventListener("click", () => {
                         const id = project.id;
-                        console.log("clicked!")
                         clearScreen();
                         const filteredProjectTodo = projectsFilter(todosArr, id);
                         filteredProjectTodo.forEach((t) => {
@@ -368,6 +386,7 @@ const addProjectHandle = function (todosArr) {
                         deleteTodayTask(todosArr);
                         taskEdit(todosArr);
                         checkTaskStatus(todosArr);
+                        markImpt(todosArr);
                     })
                 })
 
@@ -454,7 +473,7 @@ const prjoctsDropDownClr = function () {
 
 
 
-export { createTaskOnDom, clearScreen, deleteTask, idExists, deleteTodayTask };
+export { createTaskOnDom, clearScreen, deleteTask, idExists, deleteTodayTask, initialProjectHandle };
 export { addProjectHandle };
 export default mainScreenDom;
 

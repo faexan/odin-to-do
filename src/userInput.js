@@ -1,4 +1,4 @@
-import { clearScreen, createTaskOnDom, deleteTask, idExists, deleteTodayTask } from "./mainScreenDom";
+import { clearScreen, createTaskOnDom, deleteTask, idExists, deleteTodayTask, initialProjectHandle } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
 import { todayTodos, weekTodos } from "./dates";
@@ -12,7 +12,7 @@ import { markImpt } from "./markImportant";
 const todayTasksBtn = document.querySelector("#todayTasks");
 const allTasksBtn = document.querySelector("#allTasks");
 const weekyBtn = document.querySelector("#sevenDaysTasks");
-
+const imptortantTasksBtn = document.querySelector("#impTasks");
 const todos = [];
 
 
@@ -44,6 +44,7 @@ const newTaskData = function () {
                 todos.forEach((todo) => {
                     createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID, todo.status, todo.important);
                 })
+                initialProjectHandle(todos);
                 checkTaskStatus(todos);
                 editAndDetailsExpand();
                 deleteTask(todos);
@@ -80,7 +81,6 @@ todayTasksBtn.addEventListener("click", () => {
     deleteTodayTask(todos);
     taskEdit(todos);
     markImpt(todos);
-    console.log(todos)
 });
 
 // Event listener for showing all tasks
@@ -109,10 +109,21 @@ weekyBtn.addEventListener("click", () => {
     deleteTodayTask(todos);
     taskEdit(todos);
     markImpt(todos);
-    console.log(todos);
 })
 
-
+imptortantTasksBtn.addEventListener("click", () => {
+    clearScreen();
+    todos.forEach((obj) => {
+        if (obj.important == true) {
+            createTaskOnDom(obj.taskTitle, obj.taskDetails, obj.taskDate, obj.ID, obj.status, obj.important)
+        }
+    })
+    checkTaskStatus(todos);
+    editAndDetailsExpand();
+    deleteTodayTask(todos);
+    taskEdit(todos);
+    markImpt(todos);
+})
 
 addProjectHandle(todos);
 
