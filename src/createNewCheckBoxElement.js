@@ -1,7 +1,7 @@
 
 
-function createNewCheckboxElement(div, title, id) {
-  let counter = id;
+function createNewCheckboxElement(div, title, id, status) {
+  let counter = "cbx-" + id;
   
   
   const wrapper = document.createElement('div');
@@ -12,11 +12,13 @@ function createNewCheckboxElement(div, title, id) {
   
   const input = document.createElement('input');
   input.type = 'checkbox';
-  input.id = `todo-${counter}`;
+  input.id =  counter;
+  input.checked = status;
   input.classList.add('hidden');
+  input.classList.add('taskcbxs');
 
   const cbxLabel = document.createElement('label');
-  cbxLabel.setAttribute('for', `todo-${counter}`);
+  cbxLabel.setAttribute('for', counter);
   cbxLabel.classList.add('cbx');
   cbxLabel.innerHTML = `
     <svg width="14px" height="12px" viewBox="0 0 14 12">
@@ -25,7 +27,7 @@ function createNewCheckboxElement(div, title, id) {
   `;
 
   const textLabel = document.createElement('label');
-  textLabel.setAttribute('for', `todo-${counter}`);
+  textLabel.setAttribute('for', counter);
   textLabel.classList.add('cbx-lbl');
   textLabel.textContent = title; // Update label text if needed
 

@@ -30,7 +30,7 @@ const taskEdit = function (todosArr) {
                 })
                 clearScreen();
                 todosArr.forEach((t) => {
-                    createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID);
+                    createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status);
                 })
                 editAndDetailsExpand();
                 deleteTask(todosArr);

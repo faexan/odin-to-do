@@ -51,14 +51,27 @@ const weekTodos = function(todos) {
 
     todos.forEach((todo) => {
         const today = new Date();
-        const todayMonth = today.getMonth();
+        const todayMonth = Number(today.getMonth());
+        todayMonth += 1;
         const todayDate = today.getDate();
         const todayYear = today.getFullYear();
+        let sMonth = todayMonth.toString();
+        if (todayMonth < 10) {
+            sMonth = "0" + todayMonth;
+        }
+
+
+        const todayFullDate = todayYear + "-" + sMonth + "-" + todayDate;
+
+
+        const todayFullDateObj = new Date(todayFullDate);
 
         const taskD = todo.taskDate;
+        const taskDateObj = new Date(taskD);
         const taskDate = Number(taskD.substr(8,2));
         const taskMonth = Number(taskD.substr(5,2));
         const taskYear = Number(taskD.substr(0,4));
+
 
 
 

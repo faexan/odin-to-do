@@ -1,24 +1,27 @@
 import { createNewCheckboxElement } from "./createNewCheckBoxElement";
 import { taskDetailDiv } from "./taskDetailsDiv";
-
-
+import { projectsFilter } from "./Project_filter";
+import { editAndDetailsExpand } from "./editAndDetailsDiv";
+import { taskEdit } from "./taskEdit";
 import { Project } from "./logic";
 
 const mainScreenDom = function () {
 
 
-    // const taskDateInput = document.querySelector("#taskDate");
-    // const tDay = new Date();
-    // const date = Number(tDay.getDate());
-    // const s1Month  = tDay.getUTCMonth().toString();
-    // const year = tDay.getFullYear();
-    // let month = sMonth.toString();
-    // if (s1Month.length < 2) {
-    //     month = "0" + sMonth;
-    // }
-    // const fullDate = year + "-" + month + "-" + date;
+    const taskDateInput = document.querySelector("#taskDate");
+    const tDay = new Date();
+    const date = Number(tDay.getDate());
+    let s1Month = Number(tDay.getUTCMonth())
+    s1Month += 1;
+    const year = tDay.getFullYear();
+    let month = s1Month.toString();
+    if (s1Month < 10) {
+        month = "0" + s1Month;
+    }
 
-
+    const fullDate = year + "-" + month + "-" + date;
+    taskDateInput.setAttribute("min", fullDate);
+    taskDateInput.value = fullDate;
 
 
     const alltasksDiv = document.querySelector(".allTasksDiv");
@@ -65,7 +68,7 @@ const mainScreenDom = function () {
 
 
 
-const createTaskOnDom = function (taskN, taskDt, dueDa, ID) {
+const createTaskOnDom = function (taskN, taskDt, dueDa, ID, status) {
     const tasksDiv = document.querySelector(".tasksDiv");
 
 
@@ -83,7 +86,7 @@ const createTaskOnDom = function (taskN, taskDt, dueDa, ID) {
 
 
 
-    createNewCheckboxElement(div, taskN, ID);
+    createNewCheckboxElement(div, taskN, ID, status);
 
 
 
@@ -322,7 +325,7 @@ const projIDExists = function (j, arr) {
 
 const ProjectsArr = [new Project("Default", "defaultProject")];
 
-const addProjectHandle = function () {
+const addProjectHandle = function (todosArr) {
 
 
 
@@ -343,6 +346,34 @@ const addProjectHandle = function () {
                 clearProjects();
                 addProjectToDropDown(ProjectsArr);
                 addProjectToDom(ProjectsArr, newProject.value);
+
+
+                const projects = document.querySelectorAll(".PMLitems");
+
+                projects.forEach((project) => {
+                    project.addEventListener("click", () => {
+                        const id = project.id;
+                        clearScreen();
+                        const filteredProjectTodo = projectsFilter(todosArr, id);
+                        filteredProjectTodo.forEach((t) => {
+                            createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status);
+                        });
+                        editAndDetailsExpand();
+                        deleteTodayTask(todosArr);
+                        taskEdit(todosArr);
+                    })
+                })
+
+
+
+
+
+
+
+
+
+
+
             }
 
         } else {
@@ -399,7 +430,7 @@ const addProjectToDropDown = function (objArr) {
     prjoctsDropDownClr();
     objArr.forEach((obj) => {
         const option = document.createElement("option");
-        option.value = obj.id;
+        option.value = obj.ID;
         option.innerText = obj.name;
         projectDropDown.appendChild(option);
     })
@@ -409,7 +440,7 @@ const addProjectToDropDown = function (objArr) {
 
 const prjoctsDropDownClr = function () {
     const options = document.querySelectorAll("option");
-    options.forEach((o)=> {
+    options.forEach((o) => {
         o.remove();
     })
 }
