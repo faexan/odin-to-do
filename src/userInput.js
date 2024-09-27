@@ -1,14 +1,14 @@
 import { clearScreen, createTaskOnDom, deleteTask, idExists, deleteTodayTask } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
-import { todayTodos } from "./dates";
+import { todayTodos, weekTodos } from "./dates";
 import { projectsFilter } from "./Project_filter";
 import { taskEdit } from "./taskEdit";
 import { addProjectHandle } from "./mainScreenDom";
 import { checkTaskStatus } from "./taskStatus";
-
 const todayTasksBtn = document.querySelector("#todayTasks");
-const allTasksBtn = document.querySelector("#allTasks")
+const allTasksBtn = document.querySelector("#allTasks");
+const weekyBtn = document.querySelector("#sevenDaysTasks");
 
 const todos = [];
 
@@ -72,7 +72,7 @@ todayTasksBtn.addEventListener("click", () => {
     filteredTodayTodos.forEach((t) => {
         createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status);
     });
-
+    checkTaskStatus(todos)
     editAndDetailsExpand();
     deleteTodayTask(todos);
     taskEdit(todos);
@@ -86,12 +86,24 @@ allTasksBtn.addEventListener("click", () => {
     todos.forEach((t) => {
         createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status);
     });
-
+    checkTaskStatus(todos);
     editAndDetailsExpand();
     deleteTask(todos);
     taskEdit(todos);
 });
 
+
+weekyBtn.addEventListener("click", () => {
+    clearScreen();
+    const weeklyTodos = weekTodos(todos);
+    weeklyTodos.forEach((t) => {
+        createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status)
+    })
+    checkTaskStatus(todos);
+    editAndDetailsExpand();
+    deleteTodayTask(todos);
+    taskEdit(todos);
+})
 
 
 

@@ -1,3 +1,5 @@
+import { addDays } from "date-fns";
+
 const date = function () {
     // const newDate = new Date();
     // console.log(newDate.getFullYear()); 
@@ -50,36 +52,22 @@ const weekTodos = function(todos) {
     let arr = [];
 
     todos.forEach((todo) => {
-        const today = new Date();
-        const todayMonth = Number(today.getMonth());
-        todayMonth += 1;
-        const todayDate = today.getDate();
-        const todayYear = today.getFullYear();
-        let sMonth = todayMonth.toString();
-        if (todayMonth < 10) {
-            sMonth = "0" + todayMonth;
+        const todayDate = new Date();
+        
+        const afterWeekDate = addDays(todayDate, 7);
+
+        const todoDate = new Date(todo.taskDate);
+
+        if (todoDate >= todayDate && todoDate <= afterWeekDate) {
+            arr.push(todo);
         }
-
-
-        const todayFullDate = todayYear + "-" + sMonth + "-" + todayDate;
-
-
-        const todayFullDateObj = new Date(todayFullDate);
-
-        const taskD = todo.taskDate;
-        const taskDateObj = new Date(taskD);
-        const taskDate = Number(taskD.substr(8,2));
-        const taskMonth = Number(taskD.substr(5,2));
-        const taskYear = Number(taskD.substr(0,4));
-
-
 
 
     })
 
-
+    return arr;
 }
 
 
 
-export {date, todayTodos};
+export {date, todayTodos, weekTodos};

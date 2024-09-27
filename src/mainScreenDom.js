@@ -4,25 +4,18 @@ import { projectsFilter } from "./Project_filter";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { taskEdit } from "./taskEdit";
 import { Project } from "./logic";
+import { addDays, format } from 'date-fns';
+import { checkTaskStatus } from "./taskStatus";
+
 
 const mainScreenDom = function () {
 
 
     const taskDateInput = document.querySelector("#taskDate");
     const tDay = new Date();
-    const date = Number(tDay.getDate());
-    let s1Month = Number(tDay.getUTCMonth())
-    s1Month += 1;
-    const year = tDay.getFullYear();
-    let month = s1Month.toString();
-    if (s1Month < 10) {
-        month = "0" + s1Month;
-    }
+    const formattedDate = format(tDay, "yyyy-MM-dd");
 
-    const fullDate = year + "-" + month + "-" + date;
-    taskDateInput.setAttribute("min", fullDate);
-    taskDateInput.value = fullDate;
-
+    taskDateInput.setAttribute("min", formattedDate);
 
     const alltasksDiv = document.querySelector(".allTasksDiv");
     const todayTasksDiv = document.querySelector(".todayTasksDiv");
@@ -323,10 +316,11 @@ const projIDExists = function (j, arr) {
     return false;
 };
 
-const ProjectsArr = [new Project("Default", "defaultProject")];
+const ProjectsArr = [new Project("Default", "default")];
 
 const addProjectHandle = function (todosArr) {
 
+    
 
 
     const addProjectBtn = document.querySelector(".APFbtn1");
@@ -353,6 +347,7 @@ const addProjectHandle = function (todosArr) {
                 projects.forEach((project) => {
                     project.addEventListener("click", () => {
                         const id = project.id;
+                        console.log("clicked!")
                         clearScreen();
                         const filteredProjectTodo = projectsFilter(todosArr, id);
                         filteredProjectTodo.forEach((t) => {
@@ -361,6 +356,7 @@ const addProjectHandle = function (todosArr) {
                         editAndDetailsExpand();
                         deleteTodayTask(todosArr);
                         taskEdit(todosArr);
+                        checkTaskStatus(todosArr);
                     })
                 })
 
