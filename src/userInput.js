@@ -8,7 +8,7 @@ import { addProjectHandle } from "./mainScreenDom";
 import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
 import { saveTasksInLocalStorage } from "./localStorage";
-
+import { addTaskUnExpand } from "./form_unexpanded";
 
 
 
@@ -28,7 +28,7 @@ const newTaskData = function () {
     const addTaskBtn = document.querySelector(".addTaskBtn");
     const taskName = document.querySelector("#taskName");
     const taskDetail = document.querySelector("#taskDetails");
-    const project = document.querySelector("#project");
+    const project = document.querySelector("#projectsDropDown");
     const taskdate = document.querySelector("#taskDate");
 
 
@@ -42,10 +42,11 @@ const newTaskData = function () {
             const id = sp.replace(/\s/g, "");
             if (idExists(id, todos)) {
                 alert("Todo Already Exist!");
+                taskName.value = "";
             } else {
-
                 const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value, id, false, false);
                 todos.push(newTodo);
+                addTaskUnExpand(taskName, taskDetail);
                 clearScreen();
                 todos.forEach((todo) => {
                     createTaskOnDom(todo.taskTitle, todo.taskDetails, todo.taskDate, todo.ID, todo.status, todo.important);

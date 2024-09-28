@@ -4,11 +4,11 @@ import { projectsFilter } from "./Project_filter";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { taskEdit } from "./taskEdit";
 import { Project } from "./logic";
-import { addDays, format } from 'date-fns';
+import { add, addDays, format } from 'date-fns';
 import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
 import { saveTasksInLocalStorage, saveProjectsInLocalStorage } from "./localStorage";
-
+import { addTaskUnExpand } from "./form_unexpanded";
 const mainScreenDom = function () {
 
 
@@ -234,14 +234,14 @@ const newTaskFormExpand = function () {
     const trigger = document.querySelector(".addTaskRow");
     const trigger2 = document.querySelector(".cancelTaskForm");
     const form = document.querySelector(".addTaskForm");
-
+    const nameInput = document.querySelector("#taskName");
+    const detailsInput = document.querySelector("#taskDetails");
     trigger.addEventListener("click", () => {
-        form.classList.toggle("addTaskFormExpanded");
-        
+        addTaskUnExpand(nameInput, detailsInput);
     });
 
     trigger2.addEventListener("click", () => {
-        form.classList.toggle("addTaskFormExpanded");
+        addTaskUnExpand(nameInput, detailsInput);
     });
 }
 
@@ -358,11 +358,11 @@ const initialProjectHandle = function (todosArr) {
 const addProjectHandle = function (todosArr) {
     const addProjectBtn = document.querySelector(".APFbtn1");
     addProjectBtn.addEventListener("click", () => {
-
+        const form = document.querySelector(".addProjectForm");
         const newProject = document.querySelector("#newProject");
+
         const nP = newProject.value;
         const newProjectR = nP.replace(/\s/g, "");
-
 
         if (newProjectR != "") {
             if (projIDExists(newProjectR, ProjectsArr)) {
@@ -374,6 +374,9 @@ const addProjectHandle = function (todosArr) {
                 clearProjects();
                 addProjectToDropDown(ProjectsArr);
                 addProjectToDom(ProjectsArr, newProject.value);
+                newProject.value = "";
+                form.classList.toggle("formExpanded");
+            
 
 
                 const projects = document.querySelectorAll(".PMLitems");
@@ -413,6 +416,7 @@ const addProjectToDom = function (objArr) {
     const projectsList = document.querySelector(".projectsList");
 
 
+
     objArr.forEach((obj) => {
         const li = document.createElement("li");
         li.classList.add("HMLitems");
@@ -442,7 +446,7 @@ const clearProjects = function () {
 
 
 const addProjectToDropDown = function (objArr) {
-    const projectDropDown = document.querySelector("#project");
+    const projectDropDown = document.querySelector("#projectsDropDown");
     prjoctsDropDownClr();
     objArr.forEach((obj) => {
         const option = document.createElement("option");
@@ -465,8 +469,8 @@ const prjoctsDropDownClr = function () {
 
 export { createTaskOnDom, clearScreen, deleteTask, idExists, deleteTodayTask, initialProjectHandle };
 export { addProjectHandle };
-export default mainScreenDom;
-export {addProjectToDom, addProjectToDropDown}
+export {mainScreenDom} 
+export {addProjectToDom, addProjectToDropDown, clearProjects}
 
 
 
