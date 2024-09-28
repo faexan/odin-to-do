@@ -9,7 +9,7 @@ import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
 import { saveTasksInLocalStorage } from "./localStorage";
 import { addTaskUnExpand } from "./form_unexpanded";
-
+import { displayHeading } from "./mainScreenHeading";
 
 
 const todayTasksBtn = document.querySelector("#todayTasks");
@@ -76,11 +76,11 @@ const newTaskData = function () {
 }
 
 
-// Event listener for showing today's tasks
+
 todayTasksBtn.addEventListener("click", () => {
     clearScreen();
     const filteredTodayTodos = todayTodos(todos);  // Filter todos for today
-
+    displayHeading("Today Tasks")
     filteredTodayTodos.forEach((t) => {
         createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);
     });
@@ -92,8 +92,10 @@ todayTasksBtn.addEventListener("click", () => {
     saveTasksInLocalStorage(todos);
 });
 
-// Event listener for showing all tasks
+
+
 allTasksBtn.addEventListener("click", () => {
+    displayHeading("All Tasks");
     clearScreen();
     todos.forEach((t) => {
         createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);
@@ -108,6 +110,7 @@ allTasksBtn.addEventListener("click", () => {
 
 
 weekyBtn.addEventListener("click", () => {
+    displayHeading("Next 7 Days Tasks")
     clearScreen();
     const weeklyTodos = weekTodos(todos);
     weeklyTodos.forEach((t) => {
@@ -122,6 +125,7 @@ weekyBtn.addEventListener("click", () => {
 })
 
 imptortantTasksBtn.addEventListener("click", () => {
+    displayHeading("Important Tasks")
     clearScreen();
     todos.forEach((obj) => {
         if (obj.important == true) {

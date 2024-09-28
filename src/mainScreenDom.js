@@ -9,6 +9,9 @@ import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
 import { saveTasksInLocalStorage, saveProjectsInLocalStorage } from "./localStorage";
 import { addTaskUnExpand } from "./form_unexpanded";
+import { displayHeading } from "./mainScreenHeading";
+
+
 const mainScreenDom = function () {
 
 
@@ -17,44 +20,6 @@ const mainScreenDom = function () {
     const formattedDate = format(tDay, "yyyy-MM-dd");
     taskDateInput.value = formattedDate;
     taskDateInput.setAttribute("min", formattedDate);
-
-    const alltasksDiv = document.querySelector(".allTasksDiv");
-    const todayTasksDiv = document.querySelector(".todayTasksDiv");
-    const sevenTasksDiv = document.querySelector(".sevenDaysTasks");
-    const impTasks = document.querySelector(".impTasks");
-    const projects = document.querySelectorAll(".PMLitems");
-
-    const allTasksBtn = document.querySelector("#allTasks")
-    const todayTasksBtn = document.querySelector("#todayTasks")
-    const sevenTasksBtn = document.querySelector("#sevendaysTasks")
-    const impTasksBtn = document.querySelector("#imptTasks")
-
-
-    const mainScreeHeading = document.querySelector(".mainScreenheading");
-
-
-
-
-
-    const sidebarBtns = document.querySelectorAll(".HMLitems");
-    sidebarBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            if (btn.id == "allTasks") {
-                mainScreeHeading.innerHTML = "All Tasks"
-            } else if (btn.id == "todayTasks") {
-                mainScreeHeading.innerHTML = "Today Tasks"
-            } else if (btn.id == "sevenDaysTasks") {
-                mainScreeHeading.innerHTML = "Next 7 days Tasks"
-            } else if (btn.id == "impTasks") {
-                mainScreeHeading.innerHTML = "Important Tasks"
-            } else if (btn.id == "defaultProject") {
-                mainScreeHeading.innerHTML = "Default Project"
-            }
-        })
-    })
-
-
-
 
 }
 
@@ -338,6 +303,7 @@ const initialProjectHandle = function (todosArr) {
     if (initialDefaultProject) {
 
         initialDefaultProject.addEventListener("click", () => {
+            displayHeading("Default");
             clearScreen();
             const filteredProjectTodo = projectsFilter(todosArr, "default");
             filteredProjectTodo.forEach((t) => {
@@ -383,6 +349,7 @@ const addProjectHandle = function (todosArr) {
 
                 projects.forEach((project) => {
                     project.addEventListener("click", () => {
+                        displayHeading(project.innerText);
                         const id = project.id;
                         clearScreen();
                         const filteredProjectTodo = projectsFilter(todosArr, id);
@@ -428,11 +395,7 @@ const addProjectToDom = function (objArr) {
 }
 
 
-const projectsHeading = function () {
-    const btns = document.querySelectorAll(".PMLitems");
 
-
-}
 
 
 

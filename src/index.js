@@ -24,7 +24,7 @@ import { saveTasksInLocalStorage } from "./localStorage.js";
 import { addProjectToDom, addProjectToDropDown, clearProjects } from "./mainScreenDom.js";
 import { projectsFilter } from "./Project_filter.js";
 import { clearScreen } from "./mainScreenDom.js";
-
+import { displayHeading } from "./mainScreenHeading.js";
 
 if (JSON.parse(localStorage.getItem('tasks'))) {
     const arr = JSON.parse(localStorage.getItem('tasks'));
@@ -51,6 +51,7 @@ if (JSON.parse(localStorage.getItem('projects'))) {
     projects.forEach((project) => {
         project.addEventListener("click", () => {
             const id = project.id;
+            displayHeading(project.innerText);
             clearScreen();
             const filteredProjectTodo = projectsFilter(todosArr, id);
             filteredProjectTodo.forEach((t) => {
