@@ -21,7 +21,7 @@ import { taskEdit } from "./taskEdit.js";
 import { markImpt } from "./markImportant.js";
 import { editAndDetailsExpand } from "./editAndDetailsDiv.js";
 import { saveTasksInLocalStorage } from "./localStorage.js";
-
+import { addProjectToDom, addProjectToDropDown } from "./mainScreenDom.js";
 
 if (JSON.parse(localStorage.getItem('tasks'))) {
     const arr = JSON.parse(localStorage.getItem('tasks'));
@@ -35,6 +35,13 @@ if (JSON.parse(localStorage.getItem('tasks'))) {
     taskEdit(arr);
     markImpt(arr);
     saveTasksInLocalStorage(arr);
+}
+
+
+if (JSON.parse(localStorage.getItem('projects'))) {
+    const projects = JSON.parse(localStorage.getItem('projects'));
+    addProjectToDom(projects)
+    addProjectToDropDown(projects);
 }
 
 

@@ -7,7 +7,7 @@ import { Project } from "./logic";
 import { addDays, format } from 'date-fns';
 import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
-import { saveTasksInLocalStorage } from "./localStorage";
+import { saveTasksInLocalStorage, saveProjectsInLocalStorage } from "./localStorage";
 
 const mainScreenDom = function () {
 
@@ -331,7 +331,7 @@ const projIDExists = function (j, arr) {
     return false;
 };
 
-const ProjectsArr = [new Project("Default", "default")];
+const ProjectsArr = JSON.parse(localStorage.getItem('projects')) || [new Project("Default", "default")];
 
 const initialProjectHandle = function (todosArr) {
     const initialDefaultProject = document.querySelector("#defaultProject");
@@ -370,6 +370,7 @@ const addProjectHandle = function (todosArr) {
             } else {
                 const newProj = new Project(newProject.value, newProjectR)
                 ProjectsArr.push(newProj);
+                saveProjectsInLocalStorage(ProjectsArr);
                 clearProjects();
                 addProjectToDropDown(ProjectsArr);
                 addProjectToDom(ProjectsArr, newProject.value);
@@ -394,26 +395,12 @@ const addProjectHandle = function (todosArr) {
                 })
 
 
-
-
-
-
-
-
-
-
-
             }
 
         } else {
             alert("Please Add a Project Name");
         }
     })
-
-
-
-
-
 
 
 
@@ -479,7 +466,7 @@ const prjoctsDropDownClr = function () {
 export { createTaskOnDom, clearScreen, deleteTask, idExists, deleteTodayTask, initialProjectHandle };
 export { addProjectHandle };
 export default mainScreenDom;
-
+export {addProjectToDom, addProjectToDropDown}
 
 
 
