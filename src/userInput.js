@@ -1,4 +1,4 @@
-import { clearScreen, createTaskOnDom, deleteTask, idExists, deleteTodayTask, initialProjectHandle } from "./mainScreenDom";
+import { clearScreen, createTaskOnDom, deleteTask, idExists, deleteTodayTask, initialProjectHandle, newProjectFilter } from "./mainScreenDom";
 import { editAndDetailsExpand } from "./editAndDetailsDiv";
 import { Todo } from "./logic";
 import { todayTodos, weekTodos } from "./dates";
@@ -46,6 +46,8 @@ const newTaskData = function () {
             } else {
                 const newTodo = new Todo(project.value, taskName.value, taskDetail.value, taskdate.value, id, false, false);
                 todos.push(newTodo);
+                saveTasksInLocalStorage(todos);
+                newProjectFilter(todos);
                 addTaskUnExpand(taskName, taskDetail);
                 clearScreen();
                 todos.forEach((todo) => {

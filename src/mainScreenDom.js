@@ -430,7 +430,32 @@ const prjoctsDropDownClr = function () {
 
 
 
-export { createTaskOnDom, clearScreen, deleteTask, idExists, deleteTodayTask, initialProjectHandle };
+const newProjectFilter = function() {
+    const projects = document.querySelectorAll(".PMLitems");
+    const todosArr1 = JSON.parse(localStorage.getItem('tasks'));
+    projects.forEach((project) => {
+        project.addEventListener("click", () => {
+            const id = project.id;
+            displayHeading(project.innerText);
+            clearScreen();
+            const filteredProjectTodo = projectsFilter(todosArr1, id);
+            filteredProjectTodo.forEach((t) => {
+                createTaskOnDom(t.taskTitle, t.taskDetails, t.taskDate, t.ID, t.status, t.important);
+            });
+            editAndDetailsExpand();
+            deleteTodayTask(todosArr1);
+            taskEdit(todosArr1);
+            checkTaskStatus(todosArr1);
+            markImpt(todosArr1);
+        })
+    })
+}
+
+
+
+
+
+export { createTaskOnDom, clearScreen, deleteTask, idExists, deleteTodayTask, initialProjectHandle, newProjectFilter };
 export { addProjectHandle };
 export {mainScreenDom} 
 export {addProjectToDom, addProjectToDropDown, clearProjects}
