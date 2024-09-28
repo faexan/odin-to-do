@@ -43,14 +43,18 @@
     margin-right: 6px;
 }
 
-.addTaskForm, .editTaskDiv, .taskDetailsDiv {
+.addTaskForm,
+.editTaskDiv,
+.taskDetailsDiv {
     display: flex;
     flex-direction: column;
     max-height: 0;
     overflow: hidden;
 }
 
-.addTaskFormExpanded, .editTaskDivExpanded, .taskDetailsDivExpanded {
+.addTaskFormExpanded,
+.editTaskDivExpanded,
+.taskDetailsDivExpanded {
     margin: 20px;
     border: 1px solid black;
     padding: 10px;
@@ -58,7 +62,13 @@
     transition: max-height 0.4s ease;
 }
 
-#taskName, #taskDetails, .editTaskName, .editTaskDetails, .taskDetailsNameDiv, .taskDetailsdetailDiv, .taskDetailsDueDiv {
+#taskName,
+#taskDetails,
+.editTaskName,
+.editTaskDetails,
+.taskDetailsNameDiv,
+.taskDetailsdetailDiv,
+.taskDetailsDueDiv {
     padding: 10px;
     outline: none;
     font-size: large;
@@ -70,7 +80,11 @@
 }
 
 
-.taskDetailsCancelBtn:hover, input[type = "date"]:hover, select:hover, .cancelTaskForm:hover, .addTaskBtn:hover {
+.taskDetailsCancelBtn:hover,
+input[type="date"]:hover,
+select:hover,
+.cancelTaskForm:hover,
+.addTaskBtn:hover {
     cursor: pointer;
 }
 
@@ -88,17 +102,22 @@
     margin-right: 20px;
 }
 
-#taskDate, .editTaskDate {
+#taskDate,
+.editTaskDate {
     padding: 5px;
     font-size: large;
 }
 
-.addTaskFormDiv01 > label {
+.addTaskFormDiv01>label {
     font-weight: 700;
     margin-right: 10px;
 }
 
-.addTaskBtn, .cancelTaskForm, .editTaskCancel, .editTaskConfirm, .taskDetailsCancelBtn {
+.addTaskBtn,
+.cancelTaskForm,
+.editTaskCancel,
+.editTaskConfirm,
+.taskDetailsCancelBtn {
     padding: 5px;
     margin-left: 10px;
     font-size: large;
@@ -107,15 +126,18 @@
 
 
 
-.addTaskBtn, .editTaskConfirm {
+.addTaskBtn,
+.editTaskConfirm {
     background-color: var(--secondaryColor);
 }
 
-.cancelTaskForm, .editTaskCancel, .taskDetailsCancelBtn {
+.cancelTaskForm,
+.editTaskCancel,
+.taskDetailsCancelBtn {
     background-color: var(--gray);
 }
 
-.mainScreenheading  {
+.mainScreenheading {
     padding: 40px;
     background-color: var(--primaryColor);
     color: var(--backgroundColor);
@@ -130,8 +152,10 @@
 .tasks {
     height: 50px;
     background-color: var(--secondaryText);
-    border-radius: 5px;
+    border-radius: .25rem;
     margin: 5px;
+    transition: all 250ms;
+    width: auto;
 }
 
 .tasks {
@@ -141,11 +165,15 @@
     padding: 0 20px;
 }
 
-.deleteTaskIcon, .editTaskIcon, .dueDate, .star {
+.deleteTaskIcon,
+.editTaskIcon,
+.dueDate,
+.star {
     margin-left: 10px;
 }
 
-.deleteTaskIcon, .editTaskIcon {
+.deleteTaskIcon,
+.editTaskIcon {
     cursor: pointer;
 }
 
@@ -189,7 +217,7 @@
     justify-content: flex-end;
 }
 
-.editTaskChildDiv > *{
+.editTaskChildDiv>* {
     margin: 10px;
     cursor: pointer;
 }
