@@ -9,6 +9,9 @@ import { checkTaskStatus } from "./taskStatus";
 import { markImpt } from "./markImportant";
 import { saveTasksInLocalStorage } from "./localStorage";
 
+
+
+
 const todayTasksBtn = document.querySelector("#todayTasks");
 const allTasksBtn = document.querySelector("#allTasks");
 const weekyBtn = document.querySelector("#sevenDaysTasks");

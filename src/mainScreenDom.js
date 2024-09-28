@@ -281,9 +281,9 @@ const deleteTask = function (objArr) {
             for (let i = 0; i < objArr.length; i++) {
                 if (objArr[i].ID == taskID) {
                     objArr.splice(i, 1);
+                    saveTasksInLocalStorage(objArr);
                 }
             }
-            saveTasksInLocalStorage(objArr);
         })
     })
 
@@ -306,9 +306,9 @@ const deleteTodayTask = function (objArr) {
             for (let i = 0; i < objArr.length; i++) {
                 if (objArr[i].ID == taskID) {
                     objArr.splice(i, 1);
+                    saveTasksInLocalStorage(objArr);
                 }
             }
-            saveTasksInLocalStorage(arr);
             return arr;
         })
     }
