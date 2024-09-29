@@ -1,78 +1,79 @@
-.homeMenu, .projectsMenu  {
-    padding: 20px;
+.homeMenu,
+.projectsMenu {
+  padding: 20px;
 }
 
-
-
-li, .APMheading {
-    list-style: none;
-    padding: 10px;
-    border: 1px solid var(--secondaryColor);
-    width: 100%;
-    cursor: pointer;
+li,
+.APMheading {
+  list-style: none;
+  padding: 10px;
+  border: 1px solid var(--secondaryColor);
+  width: 100%;
+  cursor: pointer;
 }
 
-li:hover, .APMheading:hover {
-    background-color: var(--secondaryColor);
+li:hover,
+.APMheading:hover {
+  background-color: var(--secondaryColor);
 }
 
 .menuDiv {
-    transition: left 0.3s ease;
+  transition: left 0.3s ease;
 }
 
 .mainScreenDiv {
-    transition: left  0.3s ease;
+  transition: left 0.3s ease;
 }
 
-
 .menuDiv.sidebarActive {
-  left: -20vw; 
+  left: -20vw;
 }
 
 .mainScreenDiv.mainDivActive {
-    left: 0;
+  left: 0;
 }
 
 .addProjectForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 
 .formExpanded {
-    max-height: 400px;
-    transition: max-height 0.4s ease;
+  max-height: 400px;
+  transition: max-height 0.4s ease;
 }
 
 #newProject {
-    padding: 10px;
-    border: 1px solid var(--secondaryColor);
-    width: 100%;
-    outline: none;
+  padding: 10px;
+  border: 1px solid var(--secondaryColor);
+  width: 100%;
+  outline: none;
 }
-
 
 .addProjectFormButtons {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.APFbtn1, .APFbtn2 {
-    padding: 5px;
-    margin: 5px;
-    min-width: 80px;
-    font-weight: 600;
-    border-radius: 5px;
-    color: var(--backgroundColor);
-    font-size: 1.1em;}
+.APFbtn1,
+.APFbtn2 {
+  padding: 5px;
+  margin: 5px;
+  min-width: 80px;
+  font-weight: 600;
+  border-radius: 5px;
+  color: var(--backgroundColor);
+  font-size: 1.1em;
+}
 
 .APFbtn1 {
-    background-color: var(--secondaryColor);
+  background-color: var(--secondaryColor);
 }
 
 .APFbtn2 {
-    background-color: var(--gray);
+  background-color: var(--gray);
 }

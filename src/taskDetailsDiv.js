@@ -1,80 +1,74 @@
-const taskDetailDiv = function(tDetailsDiv, ID, taskN, taskDtl, taskd) {
+const taskDetailDiv = function (tDetailsDiv, ID, taskN, taskDtl, taskd) {
+  // Create the outer div elements
+  const taskDetailsNameDiv = document.createElement("div");
+  taskDetailsNameDiv.classList.add("taskDetailsNameDiv");
 
+  const taskDetailsdetailDiv = document.createElement("div");
+  taskDetailsdetailDiv.classList.add("taskDetailsdetailDiv");
 
+  const taskDetailsDueDiv = document.createElement("div");
+  taskDetailsDueDiv.classList.add("taskDetailsDueDiv");
 
-// Create the outer div elements
-let taskDetailsNameDiv = document.createElement('div');
-taskDetailsNameDiv.classList.add('taskDetailsNameDiv');
+  const taskDetailsCancelDiv = document.createElement("div");
+  taskDetailsCancelDiv.classList.add("taskDetailsCancelDiv");
 
-let taskDetailsdetailDiv = document.createElement('div');
-taskDetailsdetailDiv.classList.add('taskDetailsdetailDiv');
+  // Create inner elements for taskDetailsNameDiv
+  const taskDetailsNameLabel = document.createElement("span");
+  taskDetailsNameLabel.classList.add("taskDetailsNameLabel");
+  taskDetailsNameLabel.textContent = "Name: ";
 
-let taskDetailsDueDiv = document.createElement('div');
-taskDetailsDueDiv.classList.add('taskDetailsDueDiv');
+  const taskDetailsName = document.createElement("span");
+  taskDetailsName.classList.add("taskDetailsName");
+  taskDetailsName.textContent = taskN;
 
-let taskDetailsCancelDiv = document.createElement('div');
-taskDetailsCancelDiv.classList.add('taskDetailsCancelDiv');
+  // Append inner elements to taskDetailsNameDiv
+  taskDetailsNameDiv.appendChild(taskDetailsNameLabel);
+  taskDetailsNameDiv.appendChild(document.createTextNode(" ")); // Add a space between label and content
+  taskDetailsNameDiv.appendChild(taskDetailsName);
 
-// Create inner elements for taskDetailsNameDiv
-let taskDetailsNameLabel = document.createElement('span');
-taskDetailsNameLabel.classList.add('taskDetailsNameLabel');
-taskDetailsNameLabel.textContent = 'Name: ';
+  // Create inner elements for taskDetailsdetailDiv
+  const taskDetailsdetailLabel = document.createElement("span");
+  taskDetailsdetailLabel.classList.add("taskDetailsdetailLabel");
+  taskDetailsdetailLabel.textContent = "Details:";
 
-let taskDetailsName = document.createElement('span');
-taskDetailsName.classList.add('taskDetailsName');
-taskDetailsName.textContent = taskN;
+  const taskDetailsdetail = document.createElement("span");
+  taskDetailsdetail.classList.add("taskDetailsdetail");
+  taskDetailsdetail.textContent = taskDtl;
 
-// Append inner elements to taskDetailsNameDiv
-taskDetailsNameDiv.appendChild(taskDetailsNameLabel);
-taskDetailsNameDiv.appendChild(document.createTextNode(' ')); // Add a space between label and content
-taskDetailsNameDiv.appendChild(taskDetailsName);
+  // Append inner elements to taskDetailsdetailDiv
+  taskDetailsdetailDiv.appendChild(taskDetailsdetailLabel);
+  taskDetailsdetailDiv.appendChild(document.createTextNode(" ")); // Add a space
+  taskDetailsdetailDiv.appendChild(taskDetailsdetail);
 
-// Create inner elements for taskDetailsdetailDiv
-let taskDetailsdetailLabel = document.createElement('span');
-taskDetailsdetailLabel.classList.add('taskDetailsdetailLabel');
-taskDetailsdetailLabel.textContent = 'Details:';
+  // Create inner elements for taskDetailsDueDiv
+  const taskDetailsDueLabel = document.createElement("span");
+  taskDetailsDueLabel.classList.add("taskDetailsDueLabel");
+  taskDetailsDueLabel.textContent = "Due Date:";
 
-let taskDetailsdetail = document.createElement('span');
-taskDetailsdetail.classList.add('taskDetailsdetail');
-taskDetailsdetail.textContent = taskDtl;
+  const taskDetailsDue = document.createElement("span");
+  taskDetailsDue.classList.add("taskDetailsDue");
+  taskDetailsDue.textContent = taskd;
 
-// Append inner elements to taskDetailsdetailDiv
-taskDetailsdetailDiv.appendChild(taskDetailsdetailLabel);
-taskDetailsdetailDiv.appendChild(document.createTextNode(' ')); // Add a space
-taskDetailsdetailDiv.appendChild(taskDetailsdetail);
+  // Append inner elements to taskDetailsDueDiv
+  taskDetailsDueDiv.appendChild(taskDetailsDueLabel);
+  taskDetailsDueDiv.appendChild(document.createTextNode(" ")); // Add a space
+  taskDetailsDueDiv.appendChild(taskDetailsDue);
 
-// Create inner elements for taskDetailsDueDiv
-let taskDetailsDueLabel = document.createElement('span');
-taskDetailsDueLabel.classList.add('taskDetailsDueLabel');
-taskDetailsDueLabel.textContent = 'Due Date:';
+  // Create cancel button for taskDetailsCancelDiv
+  const taskDetailsCancelBtn = document.createElement("button");
+  taskDetailsCancelBtn.classList.add("taskDetailsCancelBtn");
+  taskDetailsCancelBtn.type = "button";
+  taskDetailsCancelBtn.textContent = "Cancel";
+  taskDetailsCancelBtn.id = `${ID}DetailsCancelBtn`;
 
-let taskDetailsDue = document.createElement('span');
-taskDetailsDue.classList.add('taskDetailsDue');
-taskDetailsDue.textContent = taskd;
+  // Append button to taskDetailsCancelDiv
+  taskDetailsCancelDiv.appendChild(taskDetailsCancelBtn);
 
-// Append inner elements to taskDetailsDueDiv
-taskDetailsDueDiv.appendChild(taskDetailsDueLabel);
-taskDetailsDueDiv.appendChild(document.createTextNode(' ')); // Add a space
-taskDetailsDueDiv.appendChild(taskDetailsDue);
+  // Append all the divs to the parent tDetailsDiv
+  tDetailsDiv.appendChild(taskDetailsNameDiv);
+  tDetailsDiv.appendChild(taskDetailsdetailDiv);
+  tDetailsDiv.appendChild(taskDetailsDueDiv);
+  tDetailsDiv.appendChild(taskDetailsCancelDiv);
+};
 
-// Create cancel button for taskDetailsCancelDiv
-let taskDetailsCancelBtn = document.createElement('button');
-taskDetailsCancelBtn.classList.add('taskDetailsCancelBtn');
-taskDetailsCancelBtn.type = 'button';
-taskDetailsCancelBtn.textContent = 'Cancel';
-taskDetailsCancelBtn.id = ID + "DetailsCancelBtn";
-
-// Append button to taskDetailsCancelDiv
-taskDetailsCancelDiv.appendChild(taskDetailsCancelBtn);
-
-// Append all the divs to the parent tDetailsDiv
-tDetailsDiv.appendChild(taskDetailsNameDiv);
-tDetailsDiv.appendChild(taskDetailsdetailDiv);
-tDetailsDiv.appendChild(taskDetailsDueDiv);
-tDetailsDiv.appendChild(taskDetailsCancelDiv);
-
-
-
-}
-
-export {taskDetailDiv};
+export { taskDetailDiv };

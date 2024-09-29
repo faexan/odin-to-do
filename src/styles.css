@@ -1,23 +1,22 @@
 body {
-    background-color: var(--backgroundColor);
-    min-height: 100vh;
+  background-color: var(--backgroundColor);
+  min-height: 100vh;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
-    text-decoration: none;
-    border: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  border: none;
 }
 
 :root {
-    --backgroundColor: #F5F5F5;
-    --primaryColor: #1A3D7C;
-    --secondaryColor: #00B7C2;
-    --mainText: #333333;
-    --secondaryText: #7A7A7A;
-    --gray: #A0A0A0;
+  --backgroundColor: #f5f5f5;
+  --primaryColor: #1a3d7c;
+  --secondaryColor: #00b7c2;
+  --mainText: #333333;
+  --secondaryText: #7a7a7a;
+  --gray: #a0a0a0;
 }
-

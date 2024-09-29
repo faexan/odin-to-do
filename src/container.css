@@ -1,65 +1,61 @@
 .container {
-    display: flex;
-
+  display: flex;
 }
 
 .menuDiv {
-    left: 0;
-    position: fixed;
-    border: 1px solid black;
-    width: 20vw;
-    height: calc(100vh - 100px);
-    overflow-y: scroll;
-    overflow-x: hidden;
+  left: 0;
+  position: fixed;
+  border: 1px solid black;
+  width: 20vw;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-
-
 
 .mainScreenDiv {
-    position: fixed;
-    right: 0;
-    left: 20vw;
-    width: auto;
-    height: 80vh;
-    min-height: calc(100vh - 100px);
-    padding: 30px 30px 0 30px;
-    overflow: scroll;
-    overflow-x: hidden;
+  position: fixed;
+  right: 0;
+  left: 20vw;
+  width: auto;
+  height: 80vh;
+  min-height: calc(100vh - 100px);
+  padding: 30px 30px 0 30px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-
 .addTaskRow {
-    height: 50px;
-    border-radius: 5px;
-    background-color: var(--secondaryText);
-    margin: 5px;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    cursor: pointer;
+  height: 50px;
+  border-radius: 5px;
+  background-color: var(--secondaryText);
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  cursor: pointer;
 }
 
 .addTaskIcon {
-    margin-right: 6px;
+  margin-right: 6px;
 }
 
 .addTaskForm,
 .editTaskDiv,
 .taskDetailsDiv {
-    display: flex;
-    flex-direction: column;
-    max-height: 0;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
 }
 
 .addTaskFormExpanded,
 .editTaskDivExpanded,
 .taskDetailsDivExpanded {
-    margin: 20px;
-    border: 1px solid black;
-    padding: 10px;
-    max-height: 240px;
-    transition: max-height 0.4s ease;
+  margin: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  max-height: 240px;
+  transition: max-height 0.4s ease;
 }
 
 #taskName,
@@ -69,48 +65,47 @@
 .taskDetailsNameDiv,
 .taskDetailsdetailDiv,
 .taskDetailsDueDiv {
-    padding: 10px;
-    outline: none;
-    font-size: large;
-    border-bottom: 1px solid var(--secondaryColor);
+  padding: 10px;
+  outline: none;
+  font-size: large;
+  border-bottom: 1px solid var(--secondaryColor);
 }
 
 .taskDetailsCancelBtn {
-    margin: 28px;
+  margin: 28px;
 }
-
 
 .taskDetailsCancelBtn:hover,
 input[type="date"]:hover,
 select:hover,
 .cancelTaskForm:hover,
 .addTaskBtn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .addTaskFormDiv {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: large;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: large;
+  padding: 20px;
 }
 
 #projectsDropDown {
-    padding: 5px;
-    font-size: large;
-    margin-right: 20px;
+  padding: 5px;
+  font-size: large;
+  margin-right: 20px;
 }
 
 #taskDate,
 .editTaskDate {
-    padding: 5px;
-    font-size: large;
+  padding: 5px;
+  font-size: large;
 }
 
-.addTaskFormDiv01>label {
-    font-weight: 700;
-    margin-right: 10px;
+.addTaskFormDiv01 > label {
+  font-weight: 700;
+  margin-right: 10px;
 }
 
 .addTaskBtn,
@@ -118,112 +113,105 @@ select:hover,
 .editTaskCancel,
 .editTaskConfirm,
 .taskDetailsCancelBtn {
-    padding: 5px;
-    margin-left: 10px;
-    font-size: large;
-    border-radius: 5px;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: large;
+  border-radius: 5px;
 }
-
-
 
 .addTaskBtn,
 .editTaskConfirm {
-    background-color: var(--secondaryColor);
+  background-color: var(--secondaryColor);
 }
 
 .cancelTaskForm,
 .editTaskCancel,
 .taskDetailsCancelBtn {
-    background-color: var(--gray);
+  background-color: var(--gray);
 }
 
 .mainScreenheading {
-    padding: 40px;
-    background-color: var(--primaryColor);
-    color: var(--backgroundColor);
-    border-radius: 5px;
+  padding: 40px;
+  background-color: var(--primaryColor);
+  color: var(--backgroundColor);
+  border-radius: 5px;
 }
 
 .tasksDiv {
-    padding-top: 30px;
-}
-
-
-.tasks {
-    height: 50px;
-    background-color: var(--secondaryText);
-    border-radius: .25rem;
-    margin: 5px;
-    transition: all 250ms;
-    width: auto;
+  padding-top: 30px;
 }
 
 .tasks {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+  height: 50px;
+  background-color: var(--secondaryText);
+  border-radius: 0.25rem;
+  margin: 5px;
+  transition: all 250ms;
+  width: auto;
+}
+
+.tasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .deleteTaskIcon,
 .editTaskIcon,
 .dueDate,
 .star {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .deleteTaskIcon,
 .editTaskIcon {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .deleteTaskIcon:hover {
-    color: red;
+  color: red;
 }
 
 .editTaskIcon:hover {
-    color: var(--secondaryColor);
+  color: var(--secondaryColor);
 }
 
 .star {
-    color: white;
+  color: white;
 }
 
 .star:hover {
-    cursor: pointer;
-    color: gold;
+  cursor: pointer;
+  color: gold;
 }
-
-
 
 .taskDetailsBtn {
-    padding: 2px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 2px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-
-
 .editTaskDiv {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .editTaskChildDiv {
-    display: flex;
-    align-items: center;
-    font-size: large;
-    padding: 15px;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  font-size: large;
+  padding: 15px;
+  justify-content: flex-end;
 }
 
-.editTaskChildDiv>* {
-    margin: 10px;
-    cursor: pointer;
+.editTaskChildDiv > * {
+  margin: 10px;
+  cursor: pointer;
 }
 
 .taskDetailsCancelDiv {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 }
