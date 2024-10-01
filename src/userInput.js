@@ -24,7 +24,7 @@ const allTasksBtn = document.querySelector("#allTasks");
 const weekyBtn = document.querySelector("#sevenDaysTasks");
 const imptortantTasksBtn = document.querySelector("#impTasks");
 
-const todos = JSON.parse(localStorage.getItem("tasks")) || [];
+
 
 const newTaskData = function () {
   const addTaskBtn = document.querySelector(".addTaskBtn");
@@ -32,6 +32,7 @@ const newTaskData = function () {
   const taskDetail = document.querySelector("#taskDetails");
   const project = document.querySelector("#projectsDropDown");
   const taskdate = document.querySelector("#taskDate");
+  const todos = JSON.parse(localStorage.getItem("tasks")) || [];
 
   addTaskBtn.addEventListener("click", () => {
     if (
@@ -84,6 +85,7 @@ const newTaskData = function () {
 };
 
 todayTasksBtn.addEventListener("click", () => {
+  const todos = JSON.parse(localStorage.getItem("tasks")) || [];
   clearScreen();
   const filteredTodayTodos = todayTodos(todos); // Filter todos for today
   displayHeading("Today Tasks");
@@ -106,6 +108,7 @@ todayTasksBtn.addEventListener("click", () => {
 });
 
 allTasksBtn.addEventListener("click", () => {
+  const todos = JSON.parse(localStorage.getItem("tasks")) || [];
   displayHeading("All Tasks");
   clearScreen();
   todos.forEach((t) => {
@@ -127,6 +130,7 @@ allTasksBtn.addEventListener("click", () => {
 });
 
 weekyBtn.addEventListener("click", () => {
+  const todos = JSON.parse(localStorage.getItem("tasks")) || [];
   displayHeading("Next 7 Days Tasks");
   clearScreen();
   const weeklyTodos = weekTodos(todos);
@@ -149,10 +153,11 @@ weekyBtn.addEventListener("click", () => {
 });
 
 imptortantTasksBtn.addEventListener("click", () => {
+  const todos = JSON.parse(localStorage.getItem("tasks")) || [];
   displayHeading("Important Tasks");
   clearScreen();
   todos.forEach((obj) => {
-    if (obj.important == true) {
+    if (obj.important === true) {
       createTaskOnDom(
         obj.taskTitle,
         obj.taskDetails,
@@ -170,6 +175,6 @@ imptortantTasksBtn.addEventListener("click", () => {
   markImpt(todos);
 });
 
-addProjectHandle(todos);
+addProjectHandle();
 
-export { newTaskData };
+export  { newTaskData };

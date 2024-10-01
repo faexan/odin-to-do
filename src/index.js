@@ -64,9 +64,9 @@ if (JSON.parse(localStorage.getItem("projects"))) {
   addProjectToDom(projectsArr);
   addProjectToDropDown(projectsArr);
   const projects = document.querySelectorAll(".PMLitems");
-  const todosArr = JSON.parse(localStorage.getItem("tasks"));
   projects.forEach((project) => {
     project.addEventListener("click", () => {
+      const todosArr = JSON.parse(localStorage.getItem("tasks"));
       const { id } = project;
       displayHeading(project.innerText);
       clearScreen();
@@ -86,6 +86,7 @@ if (JSON.parse(localStorage.getItem("projects"))) {
       taskEdit(todosArr);
       checkTaskStatus(todosArr);
       markImpt(todosArr);
+      saveTasksInLocalStorage(todosArr);
     });
   });
 }
