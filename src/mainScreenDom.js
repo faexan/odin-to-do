@@ -217,10 +217,11 @@ const ProjectsArr = JSON.parse(localStorage.getItem("projects")) || [
   new Project("Default", "default"),
 ];
 
-const initialProjectHandle = function (todosArr) {
+const initialProjectHandle = function () {
   const initialDefaultProject = document.querySelector("#defaultProject");
   if (initialDefaultProject) {
     initialDefaultProject.addEventListener("click", () => {
+      const todosArr = JSON.parse(localStorage.getItem("tasks")) || [];
       displayHeading("Default");
       clearScreen();
       const filteredProjectTodo = projectsFilter(todosArr, "default");
@@ -239,11 +240,12 @@ const initialProjectHandle = function (todosArr) {
       taskEdit(todosArr);
       checkTaskStatus(todosArr);
       markImpt(todosArr);
+      saveTasksInLocalStorage(todosArr);
     });
   }
 };
 
-const addProjectHandle = function (todosArr) {
+const addProjectHandle = function () {
   const addProjectBtn = document.querySelector(".APFbtn1");
   addProjectBtn.addEventListener("click", () => {
     const form = document.querySelector(".addProjectForm");
@@ -251,7 +253,6 @@ const addProjectHandle = function (todosArr) {
 
     const nP = newProject.value;
     const newProjectR = nP.replace(/\s/g, "");
-
     if (newProjectR != "") {
       if (projIDExists(newProjectR, ProjectsArr)) {
         alert("Project Already Exists");
@@ -269,6 +270,7 @@ const addProjectHandle = function (todosArr) {
 
         projects.forEach((project) => {
           project.addEventListener("click", () => {
+            const todosArr = JSON.parse(localStorage.getItem("tasks")) || [];
             displayHeading(project.innerText);
             const { id } = project;
             clearScreen();
@@ -288,6 +290,7 @@ const addProjectHandle = function (todosArr) {
             taskEdit(todosArr);
             checkTaskStatus(todosArr);
             markImpt(todosArr);
+            saveTasksInLocalStorage(todosArr);
           });
         });
       }
@@ -359,6 +362,7 @@ const newProjectFilter = function () {
       taskEdit(todosArr1);
       checkTaskStatus(todosArr1);
       markImpt(todosArr1);
+      saveTasksInLocalStorage(todosArr1);
     });
   });
 };
